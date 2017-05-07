@@ -1,18 +1,37 @@
-<!--
-  Generated template for the Docentes page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>docentes</ion-title>
+      <button ion-button menuToggle >
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>Docentes</ion-title>
   </ion-navbar>
-
 </ion-header>
 
+<ion-content>
+<ion-navbar color="primary">
+    <ion-buttons right>
+      <button ion-button icon-only (click)="openAlertNewDocente()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>  
+    <ion-title>Crear Docentes</ion-title>
+  </ion-navbar>
 
-<ion-content padding>
+   <ion-list>
+     <ion-item *ngIf="docentes.length == 0"> 
+       No existen registros de docentes
+     </ion-item>
 
+
+    <ion-item-sliding *ngFor="let docente of docentes; let i = index ">
+      <ion-item >
+        <ion-label>{{ docente.nombres }} {{ docente.primer_apellido }}</ion-label>
+        <button ion-button item-right color="danger" (click)="deleteDocente(docente, i)" >
+          <ion-icon name="trash" ></ion-icon>
+          Delete
+        </button>
+      </ion-item>
+        
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>

@@ -6,8 +6,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { MateriasPage } from '../pages/materias/materias';
+import { DocentesPage } from '../pages/docentes/docentes';
 
-import { MateriasService } from '../providers/materias-service';
 import { DatabaseService } from '../providers/database-service';
 
 
@@ -20,7 +20,6 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
-    //public materiasService: MateriasService,
     public dataBaseService: DatabaseService
   ) {
     this.initializeApp();
@@ -29,7 +28,8 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
-      { title: 'Materias', component: MateriasPage }
+      { title: 'Materias', component: MateriasPage },
+      { title: 'Docentes', component: DocentesPage }
     ];
   }
 
@@ -40,7 +40,7 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.dataBaseService.createTableMaterias();
-      //this.materiasService.createTable();
+      this.dataBaseService.createTableDocentes();
       
     });
   }

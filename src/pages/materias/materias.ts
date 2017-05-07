@@ -14,7 +14,7 @@ export class MateriasPage {
     constructor(public navCtrl: NavController,
         public alertCtrl: AlertController,
         public materiasService: MateriasService,
-        public dataBaseService: DatabaseService,
+        public dataBaseService: DatabaseService
     ) {
         materiasService.setDbo(dataBaseService.getDbo());
     }

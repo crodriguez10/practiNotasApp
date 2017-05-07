@@ -23,7 +23,7 @@ export class DatabaseService {
 	
 	openDatabase(){
 	  return this.db.create({
-		  name: 'database.db',
+		  name: 'database_v1.db',
 		  location: 'default'
 		}).then((db: SQLiteObject) =>{
 
@@ -38,7 +38,13 @@ export class DatabaseService {
 
 	createTableMaterias(){
 		console.log('createTaable');
-		let sql = 'CREATE TABLE IF NOT EXISTS materias(id INTEGER PRIMARY KEY AUTOINCREMENT, descripcion TEXT, estado_materia INTEGER)';
+		let sql = 'CREATE TABLE IF NOT EXISTS materias(id_materias INTEGER PRIMARY KEY AUTOINCREMENT, descripcion TEXT, estado_materia INTEGER)';
+		return this.dbo.executeSql(sql, []);
+	}
+
+	createTableDocentes(){
+		console.log('createTaableDocentes');
+		let sql = 'CREATE TABLE IF NOT EXISTS docentes(id_docentes INTEGER PRIMARY KEY AUTOINCREMENT, nombres TEXT, primer_apellido TEXT, segundo_apellido TEXT, contacto_telefono INTEGER, estado_docente INTEGER)';
 		return this.dbo.executeSql(sql, []);
 	}
 

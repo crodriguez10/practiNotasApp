@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SQLite, SQLiteObject  } from '@ionic-native/sqlite';
+import { SQLiteObject  } from '@ionic-native/sqlite';
 
 /*
   Generated class for the MateriasService provider.
@@ -10,8 +10,7 @@ import { SQLite, SQLiteObject  } from '@ionic-native/sqlite';
 @Injectable()
 export class MateriasService {
 
-	/*db: SQLite;
-	dbo: SQLiteObject;*/
+	
 	dbo: SQLiteObject;
 	constructor(){
 		
@@ -42,13 +41,13 @@ export class MateriasService {
 	}
 
 	update(materia: any){
-	  let sql = 'UPDATE materias SET descripcion=?, estado_materia=? WHERE id=?';
-	  return this.dbo.executeSql(sql, [materia.descripcion, materia.estado_materia, materia.id]);
+	  let sql = 'UPDATE materias SET descripcion=?, estado_materia=? WHERE id_materias=?';
+	  return this.dbo.executeSql(sql, [materia.descripcion, materia.estado_materia, materia.id_materias]);
 	}
 
 	delete(materia: any){
-	  let sql = 'DELETE FROM materias WHERE id=?';
-	  return this.dbo.executeSql(sql, [materia.id]);
+	  let sql = 'DELETE FROM materias WHERE id_materias=?';
+	  return this.dbo.executeSql(sql, [materia.id_materias]);
 	}
 
 }
