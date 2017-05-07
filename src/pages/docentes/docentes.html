@@ -26,6 +26,10 @@
     <ion-item-sliding *ngFor="let docente of docentes; let i = index ">
       <ion-item >
         <ion-label>{{ docente.nombres }} {{ docente.primer_apellido }}</ion-label>
+        <button  ion-button item-right color="secondary" (click)="openAlertUpdateDocente(docente)" >
+          <ion-icon name="md-create"></ion-icon>
+          Update
+        </button>
         <button ion-button item-right color="danger" (click)="deleteDocente(docente, i)" >
           <ion-icon name="trash" ></ion-icon>
           Delete

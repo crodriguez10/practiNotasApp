@@ -25,7 +25,11 @@
 
     <ion-item-sliding *ngFor="let materia of materias; let i = index ">
       <ion-item >
-        <ion-label>{{ materia.descripcion }}</ion-label>
+        <ion-label> {{ materia.descripcion }} </ion-label>
+        <button  ion-button item-right color="secondary" (click)="openAlertUpdateMateria(materia)" >
+          <ion-icon name="md-create"></ion-icon>
+          Update
+        </button>
         <button ion-button item-right color="danger" (click)="deleteMateria(materia, i)" >
           <ion-icon name="trash" ></ion-icon>
           Delete

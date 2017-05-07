@@ -56,10 +56,11 @@ export class MateriasPage {
         {
           text: 'Crear',
           handler: (data)=>{ 
-            data.completed = false;
+            data.estado_materia = 1;
             this.materiasService.create(data)
             .then(response => {
-              this.materias.unshift( data );
+              //this.materias.unshift( data );
+              this.getAllMaterias();
             })
             .catch( error => {
               console.error( error );
@@ -80,6 +81,41 @@ export class MateriasPage {
           console.error(error)
         });
     }
+
+    openAlertUpdateMateria(materia: any){
+    let alert = this.alertCtrl.create({
+      title: 'Modificar materia',
+      message: 'escribe el nombre de la materia',
+      inputs: [
+        {
+          name: 'descripcion',
+          value: materia.descripcion,
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          handler: () =>{
+            console.log('cancelar');
+          }
+        },
+        {
+          text: 'Modificar',
+          handler: (data)=>{ 
+            data.id_materias = materia.id_materias;
+            this.materiasService.update(data)
+            .then(response => {
+              this.getAllMaterias();
+            })
+            .catch( error => {
+              console.error( error );
+            })
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
 
 }
 

@@ -69,10 +69,10 @@ export class DocentesPage {
         {
           text: 'Crear',
           handler: (data)=>{ 
-            data.completed = false;
+            data.estado_docente = 1;
             this.docentesService.create(data)
             .then(response => {
-              this.docentes.unshift( data );
+              this.getAllDocentes();
             })
             .catch( error => {
               console.error( error );
@@ -93,6 +93,58 @@ export class DocentesPage {
           console.error(error)
         });
     }
+
+
+    openAlertUpdateDocente(docente: any, index){
+    let alert = this.alertCtrl.create({
+      title: 'Actualizar docente',
+      message: 'escribe el nombre del docente',
+      inputs: [
+        {
+          name: 'nombres',
+          value: docente.nombres,
+          placeholder: 'Digitar nombre.'
+        },
+        {
+          name: 'primer_apellido',
+          value: docente.primer_apellido,
+          placeholder: 'Digitar primer apellido.'
+        },
+        {
+          name: 'segundo_apellido',
+          value: docente.segundo_apellido,
+          placeholder: 'Digitar segundo apellido.'
+        },
+        {
+          name: 'contacto_telefono',
+          value: docente.contacto_telefono,
+          placeholder: 'Digitar telefono.'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          handler: () =>{
+            console.log('cancelar');
+          }
+        },
+        {
+          text: 'Modificar',
+          handler: (data)=>{ 
+          	data.id_docentes = docente.id_docentes;
+            this.docentesService.update(data)
+            .then(response => {
+              this.getAllDocentes();
+            })
+            .catch( error => {
+              console.error( error );
+            })
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
 
 
 }

@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
 import { SQLiteObject  } from '@ionic-native/sqlite';
 
 /*
@@ -42,6 +40,7 @@ export class DocentesService {
 	}
 
 	update(docente: any){
+		console.log("modificar docente"+docente.id_docentes);
 	  let sql = 'UPDATE docentes SET nombres = ?, primer_apellido = ?, segundo_apellido = ?, contacto_telefono = ?, estado_docente = ? WHERE id_docentes=?';
 	  return this.dbo.executeSql(sql, [docente.nombres, docente.primer_apellido, docente.segundo_apellido, docente.contacto_telefono, docente.estado_docente, docente.id_docentes]);
 	}

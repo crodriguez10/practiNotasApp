@@ -41,8 +41,9 @@ export class MateriasService {
 	}
 
 	update(materia: any){
-	  let sql = 'UPDATE materias SET descripcion=?, estado_materia=? WHERE id_materias=?';
-	  return this.dbo.executeSql(sql, [materia.descripcion, materia.estado_materia, materia.id_materias]);
+		console.log("update materias"+materia.id_materias);
+	  	let sql = 'UPDATE materias SET descripcion=?, estado_materia=? WHERE id_materias=?';
+	  	return this.dbo.executeSql(sql, [materia.descripcion, materia.estado_materia, materia.id_materias]);
 	}
 
 	delete(materia: any){
