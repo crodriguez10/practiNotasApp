@@ -8,6 +8,7 @@ import { ListPage } from '../pages/list/list';
 import { MateriasPage } from '../pages/materias/materias';
 
 import { MateriasService } from '../providers/materias-service';
+import { DatabaseService } from '../providers/database-service';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
-    public materiasService: MateriasService
+    //public materiasService: MateriasService,
+    public dataBaseService: DatabaseService
   ) {
     this.initializeApp();
 
@@ -37,7 +39,8 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.materiasService.createTable();
+      this.dataBaseService.createTableMaterias();
+      //this.materiasService.createTable();
       
     });
   }

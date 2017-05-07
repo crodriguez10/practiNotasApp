@@ -10,30 +10,16 @@ import { SQLite, SQLiteObject  } from '@ionic-native/sqlite';
 @Injectable()
 export class MateriasService {
 
-	db: SQLite;
+	/*db: SQLite;
+	dbo: SQLiteObject;*/
 	dbo: SQLiteObject;
-
 	constructor(){
-		this.db = new SQLite();
-		console.log("instanciar db");
-		this.openDatabase();
-	}
-	
-	openDatabase(){
-	  return this.db.create({
-		  name: 'data.db',
-		  location: 'default'
-		}).then((db: SQLiteObject) =>{
-
-			this.dbo = db;
-			console.log('init object dbo');
-		})
+		
 	}
 
-	createTable(){
-		console.log('createTaable');
-		let sql = 'CREATE TABLE IF NOT EXISTS materias(id INTEGER PRIMARY KEY AUTOINCREMENT, descripcion TEXT, estado_materia INTEGER)';
-		return this.dbo.executeSql(sql, []);
+	setDbo(dbo: SQLiteObject){
+		console.log("instaciar dbo");
+		this.dbo = dbo;
 	}
 
 	getAll(){

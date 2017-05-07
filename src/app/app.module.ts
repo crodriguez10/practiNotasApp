@@ -11,6 +11,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { MateriasService } from '../providers/materias-service';
+import { DatabaseService } from '../providers/database-service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { MateriasService } from '../providers/materias-service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    MateriasService
+    MateriasService,
+    DatabaseService
   ]
 })
 export class AppModule {}

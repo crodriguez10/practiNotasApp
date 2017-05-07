@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 
 import { MateriasService } from '../../providers/materias-service';
+import { DatabaseService } from '../../providers/database-service';
 
 @Component({
   selector: 'page-materias',
@@ -10,12 +11,13 @@ import { MateriasService } from '../../providers/materias-service';
 export class MateriasPage {
 
 	materias: any[] = [];
-  constructor(public navCtrl: NavController,
-  public alertCtrl: AlertController,
-  public materiasService: MateriasService
-  ) {
-
-  }
+    constructor(public navCtrl: NavController,
+        public alertCtrl: AlertController,
+        public materiasService: MateriasService,
+        public dataBaseService: DatabaseService,
+    ) {
+        materiasService.setDbo(dataBaseService.getDbo());
+    }
 
 
   ionViewDidLoad(){
