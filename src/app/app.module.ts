@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { MateriasPage } from '../pages/materias/materias';
 import { DocentesPage } from '../pages/docentes/docentes';
+import { CarrerasPage } from '../pages/carreras/carreras';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -14,6 +15,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { DatabaseService } from '../providers/database-service';
 import { MateriasService } from '../providers/materias-service';
 import { DocentesService } from '../providers/docentes-service';
+import { CarrerasService } from '../providers/carreras-service';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { DocentesService } from '../providers/docentes-service';
     HomePage,
     ListPage, 
     MateriasPage,
-    DocentesPage
+    DocentesPage,
+    CarrerasPage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import { DocentesService } from '../providers/docentes-service';
     HomePage,
     ListPage,
     MateriasPage,
-    DocentesPage
+    DocentesPage,
+    CarrerasPage
   ],
   providers: [
     StatusBar,
@@ -41,7 +45,8 @@ import { DocentesService } from '../providers/docentes-service';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DatabaseService,
     MateriasService,
-    DocentesService
+    DocentesService,
+    CarrerasService
   ]
 })
 export class AppModule {}

@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { MateriasPage } from '../pages/materias/materias';
 import { DocentesPage } from '../pages/docentes/docentes';
+import { CarrerasPage } from '../pages/carreras/carreras';
 
 import { DatabaseService } from '../providers/database-service';
 
@@ -29,7 +30,8 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
       { title: 'Materias', component: MateriasPage },
-      { title: 'Docentes', component: DocentesPage }
+      { title: 'Docentes', component: DocentesPage } ,
+      { title: 'Carreras', component: CarrerasPage }
     ];
   }
 
@@ -41,7 +43,7 @@ export class MyApp {
       this.splashScreen.hide();
       this.dataBaseService.createTableMaterias();
       this.dataBaseService.createTableDocentes();
-      
+      this.dataBaseService.createTableCarreras();
     });
   }
 

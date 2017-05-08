@@ -46,4 +46,10 @@ export class DatabaseService {
 		return this.dbo.executeSql(sql, []);
 	}
 
+	createTableCarreras(){
+		console.log('createTableCarrera');
+		let sql = 'CREATE TABLE IF NOT EXISTS carreras(id_carrera  INTEGER PRIMARY KEY AUTOINCREMENT , descripcion TEXT , estadoCarrera INTEGER)';
+		return this.dbo.executeSql(sql, []);
+	}
+
 }
