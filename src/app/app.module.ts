@@ -8,6 +8,11 @@ import { ListPage } from '../pages/list/list';
 import { MateriasPage } from '../pages/materias/materias';
 import { DocentesPage } from '../pages/docentes/docentes';
 import { CarrerasPage } from '../pages/carreras/carreras';
+import { CarreraMateriaPage } from '../pages/carrera-materia/carrera-materia';
+import { CortePage } from '../pages/corte/corte';
+import { DocenteMateriaPage } from '../pages/docente-materia/docente-materia';
+import { CorteMateriaPage } from '../pages/corte-materia/corte-materia';
+import { PendientesPage } from '../pages/pendientes/pendientes';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -16,6 +21,11 @@ import { DatabaseService } from '../providers/database-service';
 import { MateriasService } from '../providers/materias-service';
 import { DocentesService } from '../providers/docentes-service';
 import { CarrerasService } from '../providers/carreras-service';
+import { CarreraMateriaService } from '../providers/carrera-materia';
+import { CorteService } from '../providers/corte-service';
+import { CorteMateriaService } from '../providers/corte-materia-service';
+import { DocenteMateriaService } from '../providers/docente-materia-service';
+import { PendientesService } from '../providers/pendientes-service';
 
 @NgModule({
   declarations: [
@@ -24,7 +34,12 @@ import { CarrerasService } from '../providers/carreras-service';
     ListPage, 
     MateriasPage,
     DocentesPage,
-    CarrerasPage
+    CarrerasPage,
+    CarreraMateriaPage,
+    CortePage,
+    CorteMateriaPage,
+    DocenteMateriaPage,
+    PendientesPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +52,12 @@ import { CarrerasService } from '../providers/carreras-service';
     ListPage,
     MateriasPage,
     DocentesPage,
-    CarrerasPage
+    CarrerasPage,
+    CarreraMateriaPage,
+    CortePage,
+    CorteMateriaPage,
+    DocenteMateriaPage,
+    PendientesPage
   ],
   providers: [
     StatusBar,
@@ -46,7 +66,12 @@ import { CarrerasService } from '../providers/carreras-service';
     DatabaseService,
     MateriasService,
     DocentesService,
-    CarrerasService
+    CarrerasService,
+    CarreraMateriaService,
+    CorteService,
+    CorteMateriaService,
+    DocenteMateriaService,
+    PendientesService
   ]
 })
 export class AppModule {}

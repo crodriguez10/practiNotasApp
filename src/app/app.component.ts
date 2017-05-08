@@ -8,6 +8,11 @@ import { ListPage } from '../pages/list/list';
 import { MateriasPage } from '../pages/materias/materias';
 import { DocentesPage } from '../pages/docentes/docentes';
 import { CarrerasPage } from '../pages/carreras/carreras';
+import { CarreraMateriaPage } from '../pages/carrera-materia/carrera-materia';
+import { CortePage } from '../pages/corte/corte';
+import { CorteMateriaPage } from '../pages/corte-materia/corte-materia';
+import { DocenteMateriaPage } from '../pages/docente-materia/docente-materia';
+import { PendientesPage } from '../pages/pendientes/pendientes';
 
 import { DatabaseService } from '../providers/database-service';
 
@@ -29,9 +34,14 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
-      { title: 'Materias', component: MateriasPage },
+      { title: 'Materias', component: MateriasPage } ,
       { title: 'Docentes', component: DocentesPage } ,
-      { title: 'Carreras', component: CarrerasPage }
+      { title: 'Carreras', component: CarrerasPage } ,
+      { title: 'CarreraMateria', component: CarreraMateriaPage } ,
+      { title: 'DocenteMateria', component: DocenteMateriaPage } ,
+      { title: 'Corte', component: CortePage } ,
+      { title: 'CorteMateria', component: CorteMateriaPage } ,
+      { title: 'Pendientes', component: PendientesPage }
     ];
   }
 
@@ -44,6 +54,11 @@ export class MyApp {
       this.dataBaseService.createTableMaterias();
       this.dataBaseService.createTableDocentes();
       this.dataBaseService.createTableCarreras();
+      this.dataBaseService.createTableCarreraMateria();
+      this.dataBaseService.createTableDocenteMateria();
+      this.dataBaseService.createTableCorte();
+      this.dataBaseService.createTableCorteMateria();
+      this.dataBaseService.createTablePendientes();
     });
   }
 
