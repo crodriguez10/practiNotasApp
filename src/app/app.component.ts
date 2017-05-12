@@ -44,7 +44,12 @@ export class MyApp {
       this.dataBaseService.createTableMaterias();
       this.dataBaseService.createTableDocentes();
       this.dataBaseService.createTableApuntes();
-      
+      this.dataBaseService.createTableCarreras();
+      this.dataBaseService.createTableCarreraMateria();
+      this.dataBaseService.createTableDocenteMateria();
+      this.dataBaseService.createTableCorte();
+      this.dataBaseService.createTableCorteMateria();
+      this.dataBaseService.createTablePendientes();
     });
   }
 

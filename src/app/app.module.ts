@@ -16,6 +16,12 @@ import { DatabaseService } from '../providers/database-service';
 import { MateriasService } from '../providers/materias-service';
 import { DocentesService } from '../providers/docentes-service';
 import { ApuntesService } from '../providers/apuntes-service';
+import { CarrerasService } from '../providers/carreras-service';
+import { CarreraMateriaService } from '../providers/carrera-materia-service';
+import { CorteService } from '../providers/corte-service';
+import { CorteMateriaService } from '../providers/corte-materia-service';
+import { DocenteMateriaService } from '../providers/docente-materia-service';
+import { PendientesService } from '../providers/pendientes-service';
 
 @NgModule({
   declarations: [
@@ -24,7 +30,7 @@ import { ApuntesService } from '../providers/apuntes-service';
     ListPage, 
     MateriasPage,
     DocentesPage,
-    ApuntesPage
+    ApuntesPage,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +43,7 @@ import { ApuntesService } from '../providers/apuntes-service';
     ListPage,
     MateriasPage,
     DocentesPage,
-    ApuntesPage
+    ApuntesPage,
   ],
   providers: [
     StatusBar,
@@ -46,7 +52,13 @@ import { ApuntesService } from '../providers/apuntes-service';
     DatabaseService,
     MateriasService,
     DocentesService,
-    ApuntesService
+    ApuntesService,
+    CarrerasService,
+    CarreraMateriaService,
+    CorteService,
+    CorteMateriaService,
+    DocenteMateriaService,
+    PendientesService
   ]
 })
 export class AppModule {}

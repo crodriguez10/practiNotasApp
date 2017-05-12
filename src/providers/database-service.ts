@@ -52,4 +52,40 @@ export class DatabaseService {
 		return this.dbo.executeSql(sql, []);
 	}
 
+	createTableCarreras(){
+		console.log('createTableCarreras');
+		let sql = 'CREATE TABLE IF NOT EXISTS carreras( id_carreras  INTEGER PRIMARY KEY AUTOINCREMENT , descripcion TEXT , estadoCarrera INTEGER )';
+		return this.dbo.executeSql(sql, []);
+	}
+
+	createTableCarreraMateria(){
+		console.log('createTableCarreraMateria');
+		let sql = 'CREATE TABLE IF NOT EXISTS carreraMateria ( id_carreraMateria INTEGER PRIMARY KEY AUTOINCREMENT , id_carrera INTEGER , id_materia INTEGER , estadoCarreraMateria INTEGER )';
+		return this.dbo.executeSql(sql, []);
+	}	
+
+	createTableCorte(){
+		console.log('createTableCorte');
+		let sql = 'CREATE TABLE IF NOT EXISTS corte ( id_corte INTEGER PRIMARY KEY AUTOINCREMENT , descripcion TEXT , estadoCorte INTEGER )';
+		return this.dbo.executeSql(sql, []);
+	}
+	
+	createTableCorteMateria(){
+		console.log('createTableCorteMateria');
+		let sql = 'CREATE TABLE IF NOT EXISTS corteMateria ( id_corteMateria INTEGER PRIMARY KEY AUTOINCREMENT , id_corte INTEGER , id_materia INTEGER , estadoCorteMateria INTEGER )';
+		return this.dbo.executeSql(sql, []);
+	}
+
+	createTableDocenteMateria(){
+		console.log('createTableDocenteMateria');
+		let sql = 'CREATE TABLE IF NOT EXISTS docenteMateria ( id_docenteMateria INTEGER PRIMARY KEY AUTOINCREMENT , id_docente INTEGER , id_Materia INTEGER , estadoDocenteMateria INTEGER )';
+		return this.dbo.executeSql(sql, []);
+	}
+	
+	createTablePendientes(){
+		console.log('createTablePendientes');
+		let sql = 'CREATE TABLE IF NOT EXISTS pendientes ( id_pendientes INTEGER PRIMARY KEY AUTOINCREMENT , id_materia INTEGER , descripcion TEXT , fechaEvento DATE , estadoEvento INTEGER )';
+		return this.dbo.executeSql(sql, []);
+	}
+
 }
