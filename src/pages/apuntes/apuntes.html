@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+      <button ion-button menuToggle >
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>Apuntes</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+<ion-navbar color="primary">
+    <ion-buttons right>
+      <button ion-button icon-only (click)="openAlertNewApuntes()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>  
+    <ion-title>Crear Apuntes</ion-title>
+  </ion-navbar>
+
+   <ion-list>
+     <ion-item *ngIf="apuntes.length == 0"> 
+       No existen registros de materias
+     </ion-item>
+
+
+    <ion-item-sliding *ngFor="let apunte of apuntes; let i = index ">
+      <ion-item >
+        <ion-label> {{ apunte.descripcion }} </ion-label>
+        <button  ion-button item-right color="secondary" (click)="openAlertUpdateApunte(materia)" >
+          <ion-icon name="md-create"></ion-icon>
+          Update
+        </button>
+        <button ion-button item-right color="danger" (click)="deleteApunte(materia, i)" >
+          <ion-icon name="trash" ></ion-icon>
+          Delete
+        </button>
+      </ion-item>
+        
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

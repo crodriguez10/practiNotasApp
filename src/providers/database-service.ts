@@ -46,4 +46,10 @@ export class DatabaseService {
 		return this.dbo.executeSql(sql, []);
 	}
 
+	createTableApuntes(){
+		console.log('createTaableApuntas');
+		let sql = 'CREATE TABLE IF NOT EXISTS apuntes(id_apuntes INTEGER PRIMARY KEY AUTOINCREMENT, id_materia INTEGER, descripcion TEXT, adjunto TEXT, estado_apunte INTEGER)';
+		return this.dbo.executeSql(sql, []);
+	}
+
 }
