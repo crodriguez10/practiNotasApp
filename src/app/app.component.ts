@@ -8,6 +8,7 @@ import { ListPage } from '../pages/list/list';
 import { MateriasPage } from '../pages/materias/materias';
 import { DocentesPage } from '../pages/docentes/docentes';
 import { ApuntesPage } from '../pages/apuntes/apuntes';
+import { PendientesPage } from '../pages/pendientes/pendientes';
 
 import { DatabaseService } from '../providers/database-service';
 
@@ -31,7 +32,8 @@ export class MyApp {
       { title: 'List', component: ListPage },
       { title: 'Materias', component: MateriasPage },
       { title: 'Docentes', component: DocentesPage },
-      { title: 'Apuntes', component: ApuntesPage }
+      { title: 'Apuntes', component: ApuntesPage },
+      { title: 'Pendientes', component: PendientesPage }
     ];
   }
 
