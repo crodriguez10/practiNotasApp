@@ -23,7 +23,7 @@ export class PendientesService {
 	}
 
 	create(pendiente: any){
-		console.log("crear registro Pendiente");
+		console.log("crear registro Pendiente descripcion:"+pendiente.descripcion);
 	  let sql = 'INSERT INTO pendientes(id_materia  , descripcion  , fechaEvento  , estadoEvento ) VALUES(?,?,?,?)';
 	  return this.dbo.executeSql(sql, [pendiente.id_materia  , pendiente.descripcion  , pendiente.fechaEvento  , pendiente.estadoEvento ]);
 

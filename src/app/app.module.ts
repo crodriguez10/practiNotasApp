@@ -46,7 +46,7 @@ import { PendientesService } from '../providers/pendientes-service';
     MateriasPage,
     DocentesPage,
     ApuntesPage,
-    PendientesService,
+    PendientesPage,
   ],
   providers: [
     StatusBar,

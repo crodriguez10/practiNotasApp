@@ -45,15 +45,15 @@ export class PendientesPage {
       message: 'escribe el nombre del pendiente',
       inputs: [
         {
-          name: 'Materia',
+          name: 'id_materia',
           placeholder: 'Digitar Materia.',
         },
         {
-          name: 'Descripcion',
+          name: 'descripcion',
           placeholder: 'Digitar Descripcion.',
         },
         {
-          name: 'Fecha',
+          name: 'fechaEvento',
           placeholder: 'Digitar Fecha.',
         }
         
@@ -100,17 +100,17 @@ export class PendientesPage {
       message: 'escribe el nombre del pendiente',
       inputs: [
          {
-          name: 'Materia',
+          name: 'id_materia',
           value: pendiente.id_materia,
           placeholder: 'Digitar Materia.',
         },
         {
-          name: 'Descripcion',
+          name: 'descripcion',
           value: pendiente.descripcion,
           placeholder: 'Digitar Descripcion.',
         },
         {
-          name: 'Fecha',
+          name: 'fechaEvento',
           value: pendiente.fechaEvento,
           placeholder: 'Digitar Fecha.',
         }
