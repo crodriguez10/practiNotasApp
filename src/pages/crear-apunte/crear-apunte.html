@@ -18,12 +18,11 @@
             <ion-option *ngFor="let materia of materias" [value] = "materia.id_materia">{{materia.descripcion}}</ion-option>
           </ion-select>
       </ion-item>
-        <ion-item>
-            <ion-label floating>adjunto</ion-label>
-            <ion-input type="text" value="" name="adjunto" formControlName="adjunto"></ion-input>         
-        </ion-item>
+        <button type="button" ion-button block icon-only (click)="getPicture()">
+            <ion-icon name="md-camera"></ion-icon>
+            tomar foto
+        </button>  
         <br/><br/> 
-        <button ion-button color="light" type="submit" (click)="goToBack()">Cancelar</button>
-        <button ion-button type="submit" class="custom-button"  [disabled]="!formCrearApunte.valid">Guardar</button>
+        <button ion-button type="submit" class="custom-button" block [disabled]="!isValidForm()">Guardar</button>
     </form>
 </ion-content>

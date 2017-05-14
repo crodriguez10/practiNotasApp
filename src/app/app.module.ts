@@ -25,6 +25,8 @@ import { CorteMateriaService } from '../providers/corte-materia-service';
 import { DocenteMateriaService } from '../providers/docente-materia-service';
 import { PendientesService } from '../providers/pendientes-service';
 
+import { Camera } from '@ionic-native/camera';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -64,7 +66,8 @@ import { PendientesService } from '../providers/pendientes-service';
     CorteService,
     CorteMateriaService,
     DocenteMateriaService,
-    PendientesService
+    PendientesService,
+    Camera
   ]
 })
 export class AppModule {}

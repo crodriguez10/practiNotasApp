@@ -19,18 +19,18 @@
 
    <ion-list>
      <ion-item *ngIf="apuntes.length == 0"> 
-       No existen registros de materias
+       No existen registros de apuntes
      </ion-item>
 
 
     <ion-item-sliding *ngFor="let apunte of apuntes; let i = index ">
       <ion-item >
         <ion-label> {{ apunte.descripcion }} </ion-label>
-        <button  ion-button item-right color="secondary" (click)="openAlertUpdateApunte(materia)" >
+        <button  ion-button item-right color="secondary" (click)="openAlertUpdateApunte(apunte)" >
           <ion-icon name="md-create"></ion-icon>
           Update
         </button>
-        <button ion-button item-right color="danger" (click)="deleteApunte(materia, i)" >
+        <button ion-button item-right color="danger" (click)="deleteApunte(apunte, i)" >
           <ion-icon name="trash" ></ion-icon>
           Delete
         </button>

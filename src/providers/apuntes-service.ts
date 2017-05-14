@@ -34,9 +34,17 @@ export class ApuntesService {
 	}
 
 	create(apunte: any){
-		console.log("crear registro apuntes"+apunte);
+		console.log("crear registro apuntes"+apunte.adjunto);
 	  let sql = 'INSERT INTO apuntes(id_materia, descripcion, adjunto, estado_apunte) VALUES(?,?,?,?)';
 	  return this.dbo.executeSql(sql, [apunte.id_materia, apunte.descripcion, apunte.adjunto, apunte.estado_apunte]);
 	}
+
+	delete(apunte: any){
+		console.log("eliminar apunte"+apunte.id_apuntes);
+	  let sql = 'DELETE FROM apuntes WHERE id_apuntes=?';
+	  return this.dbo.executeSql(sql, [apunte.id_apuntes]);
+	}
+
+	
 
 }

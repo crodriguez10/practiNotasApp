@@ -96,6 +96,16 @@ export class ApuntesPage {
     this.navCtrl.push(CrearApuntePage);
   }
 
+  deleteApunte(apunte: any, index){
+        this.apuntesService.delete(apunte)
+        .then(response =>{ 
+            this.apuntes.splice(index, 1)
+        })
+        .catch(error =>{
+          console.error(error)
+        });
+    }
+
 
 }
 

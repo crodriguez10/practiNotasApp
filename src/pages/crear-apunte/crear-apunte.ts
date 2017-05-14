@@ -4,6 +4,8 @@ import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { MateriasService } from '../../providers/materias-service';
 import { DatabaseService } from '../../providers/database-service';
 import { ApuntesService } from '../../providers/apuntes-service';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+
 
 /**
  * Generated class for the CrearApunte page.
@@ -18,10 +20,14 @@ export class CrearApuntePage {
 
 	materias: any[] = [];
   	formCrearApunte: FormGroup;
+  	image: string = null;
+
+
     constructor(private navController: NavController, private fb: FormBuilder,
     	public materiasService: MateriasService,
     	public dataBaseService: DatabaseService,
-    	public apuntesService: ApuntesService,) {
+    	public apuntesService: ApuntesService,
+    	private camera: Camera) {
         this.navController = navController;
         this.validations(this.fb);
         materiasService.setDbo(dataBaseService.getDbo());
@@ -45,6 +51,7 @@ export class CrearApuntePage {
         if(this.formCrearApunte.valid) {
             console.log('Submitted value: '+ data.descripcion);
             data.estado_apunte = 1;
+            data.adjunto = this.image;
             this.apuntesService.create(data);
             this.goToBack();
         }
@@ -53,13 +60,37 @@ export class CrearApuntePage {
     validations(fb: FormBuilder){
       this.formCrearApunte = fb.group({  
             'id_materia': ['', Validators.required],
-            'descripcion': ['', Validators.required],
-            'adjunto': ['', Validators.required]
+            'descripcion': ['', Validators.required]
+
         });
     }
 
     goToBack(){
     	this.navController.pop();
     }
+
+    getPicture(){
+		let options: CameraOptions = {
+			destinationType: this.camera.DestinationType.FILE_URI
+		}
+
+		this.camera.getPicture( options )
+	    .then(imageData => {
+	      	this.image = imageData;
+	      	console.log("imageData: "+imageData)
+	    })
+	    .catch(error =>{
+	      	console.error( error );
+	    });
+	}
+
+    isValidForm(){
+        if(this.formCrearApunte.valid && this.image != null){
+            return true;
+        }
+        return false;
+        
+    }
+	
 
 }
