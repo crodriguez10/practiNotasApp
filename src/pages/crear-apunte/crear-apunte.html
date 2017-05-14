@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Crear apuntes
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+ 
+<ion-content class="home" padding>
+    <form [formGroup]="formCrearApunte" (ngSubmit)="guardarApunte(formCrearApunte.value)">
+        <ion-item>
+            <ion-label floating>descripcion</ion-label>
+            <ion-input type="text" value="" name="descripcion" formControlName="descripcion"></ion-input>         
+        </ion-item>
+        <ion-item>
+          <ion-label>Materia</ion-label>
+            <ion-select  formControlName="id_materia" name="id_materia">
+            <ion-option *ngFor="let materia of materias" [value] = "materia.id_materia">{{materia.descripcion}}</ion-option>
+          </ion-select>
+      </ion-item>
+        <ion-item>
+            <ion-label floating>adjunto</ion-label>
+            <ion-input type="text" value="" name="adjunto" formControlName="adjunto"></ion-input>         
+        </ion-item>
+        <br/><br/> 
+        <button ion-button color="light" type="submit" (click)="goToBack()">Cancelar</button>
+        <button ion-button type="submit" class="custom-button"  [disabled]="!formCrearApunte.valid">Guardar</button>
+    </form>
+</ion-content>

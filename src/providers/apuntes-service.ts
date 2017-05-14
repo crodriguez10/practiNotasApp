@@ -34,7 +34,7 @@ export class ApuntesService {
 	}
 
 	create(apunte: any){
-		console.log("crear registro");
+		console.log("crear registro apuntes"+apunte);
 	  let sql = 'INSERT INTO apuntes(id_materia, descripcion, adjunto, estado_apunte) VALUES(?,?,?,?)';
 	  return this.dbo.executeSql(sql, [apunte.id_materia, apunte.descripcion, apunte.adjunto, apunte.estado_apunte]);
 	}

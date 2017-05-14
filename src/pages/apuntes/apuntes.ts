@@ -3,6 +3,7 @@ import { NavController, AlertController } from 'ionic-angular';
 
 import { ApuntesService } from '../../providers/apuntes-service';
 import { DatabaseService } from '../../providers/database-service';
+import { CrearApuntePage } from '../crear-apunte/crear-apunte';
 /**
  * Generated class for the Apuntes page.
  *
@@ -22,10 +23,16 @@ export class ApuntesPage {
         public dataBaseService: DatabaseService
         ) {
     apuntesService.setDbo(dataBaseService.getDbo());
+    this.navCtrl = navCtrl;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Apuntes');
+    this.getAllApuntes();
+  }
+
+  ionViewWillEnter() {
+    console.log("ionViewWillEnter");
     this.getAllApuntes();
   }
 
@@ -85,5 +92,11 @@ export class ApuntesPage {
     alert.present();
   }
 
+  crearApuntes(){
+    this.navCtrl.push(CrearApuntePage);
+  }
+
 
 }
+
+

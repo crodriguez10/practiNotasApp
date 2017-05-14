@@ -9,6 +9,7 @@ import { MateriasPage } from '../pages/materias/materias';
 import { DocentesPage } from '../pages/docentes/docentes';
 import { ApuntesPage } from '../pages/apuntes/apuntes';
 import { PendientesPage } from '../pages/pendientes/pendientes';
+import { CrearApuntePage } from '../pages/crear-apunte/crear-apunte';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -33,6 +34,7 @@ import { PendientesService } from '../providers/pendientes-service';
     DocentesPage,
     ApuntesPage,
     PendientesPage,
+    CrearApuntePage
   ],
   imports: [
     BrowserModule,
@@ -47,6 +49,7 @@ import { PendientesService } from '../providers/pendientes-service';
     DocentesPage,
     ApuntesPage,
     PendientesPage,
+    CrearApuntePage
   ],
   providers: [
     StatusBar,
