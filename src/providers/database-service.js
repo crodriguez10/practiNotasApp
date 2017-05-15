@@ -45,6 +45,7 @@ var DatabaseService = (function () {
         var sql = 'CREATE TABLE IF NOT EXISTS docentes(id_docentes INTEGER PRIMARY KEY AUTOINCREMENT, nombres TEXT, primer_apellido TEXT, segundo_apellido TEXT, contacto_telefono INTEGER, estado_docente INTEGER)';
         return this.dbo.executeSql(sql, []);
     };
+     
     return DatabaseService;
 }());
 DatabaseService = __decorate([

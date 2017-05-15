@@ -9,7 +9,7 @@ import { MateriasPage } from '../pages/materias/materias';
 import { DocentesPage } from '../pages/docentes/docentes';
 import { ApuntesPage } from '../pages/apuntes/apuntes';
 import { PendientesPage } from '../pages/pendientes/pendientes';
-
+import { CarrerasPage } from '../pages/carreras/carreras';
 import { DatabaseService } from '../providers/database-service';
 
 
@@ -33,7 +33,8 @@ export class MyApp {
       { title: 'Materias', component: MateriasPage },
       { title: 'Docentes', component: DocentesPage },
       { title: 'Apuntes', component: ApuntesPage },
-      { title: 'Pendientes', component: PendientesPage }
+      { title: 'Pendientes', component: PendientesPage },
+      { title: 'Carreras', component: CarrerasPage }
     ];
   }
 

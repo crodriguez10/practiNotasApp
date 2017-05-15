@@ -50,12 +50,12 @@ export class ApuntesPage {
 
   openAlertNewApuntes(){
     let alert = this.alertCtrl.create({
-      title: 'Crear apunte',
-      message: 'escribe el nombre de la apunte',
+      title: 'Crear Apuntes',
+      message: 'escribe el nombre de la apuntes',
       inputs: [
         {
-          name: 'id_materia',
-          placeholder: 'Digitar id materia.',
+          name: 'id_apunte',
+          placeholder: 'Digitar id .',
         },
         {
           name: 'descripcion',

@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+      <button ion-button menuToggle >
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>Carreras</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+<ion-navbar color="primary">
+    <ion-buttons right>
+      <button ion-button icon-only (click)="openAlertNewCarrera()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>  
+    <ion-title>Crear Carreras</ion-title>
+  </ion-navbar>
+
+   <ion-list>
+     <ion-item *ngIf="carreras.length == 0"> 
+       No existen registros de carreras
+     </ion-item>
+
+ <ion-item-sliding *ngFor="let materia of materias; let i = index ">
+      <ion-item >
+        <ion-label> {{ carreras.descripcion }} </ion-label>
+        <button  ion-button item-right color="secondary" (click)="openAlertUpdateCarrera(carrera)" >
+          <ion-icon name="md-create"></ion-icon>
+          Update
+        </button>
+        <button ion-button item-right color="danger" (click)="deleteCarrera(carrera, i)" >
+          <ion-icon name="trash" ></ion-icon>
+          Delete
+        </button>
+      </ion-item>
+        
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
