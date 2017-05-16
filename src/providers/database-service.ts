@@ -21,7 +21,7 @@ export class DatabaseService {
 	
 	openDatabase(){
 	  return this.db.create({
-		  name: 'database_v1.db',
+		  name: 'database_v2.db',
 		  location: 'default'
 		}).then((db: SQLiteObject) =>{
 

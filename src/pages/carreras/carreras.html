@@ -22,9 +22,9 @@
        No existen registros de carreras
      </ion-item>
 
- <ion-item-sliding *ngFor="let materia of materias; let i = index ">
+ <ion-item-sliding *ngFor="let carrera of carreras; let i = index ">
       <ion-item >
-        <ion-label> {{ carreras.descripcion }} </ion-label>
+        <ion-label> {{ carrera.descripcion }} </ion-label>
         <button  ion-button item-right color="secondary" (click)="openAlertUpdateCarrera(carrera)" >
           <ion-icon name="md-create"></ion-icon>
           Update

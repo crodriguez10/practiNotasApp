@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { SQLiteObject  } from '@ionic-native/sqlite';
 
 /*
-  Generated class for the Carreras provider.
+  Generated class for the CarrerasService provider.
 
   See https://angular.io/docs/ts/latest/guide/dependency-injection.html
   for more info on providers and Angular 2 DI.
@@ -10,10 +10,13 @@ import { SQLiteObject  } from '@ionic-native/sqlite';
 @Injectable()
 export class CarrerasService {
 
-	dbo: SQLiteObject;
-	constructor() {
+  dbo: SQLiteObject;
+  
+  constructor() {
+    console.log('Hello CarrerasService Provider');
+  }
 
-	}
+	
 
 	setDbo(dbo: SQLiteObject){
 		console.log("instaciar dbo");

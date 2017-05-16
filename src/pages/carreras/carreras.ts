@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 
-import { CarrerasService } from '../../providers/carreras-Service';
+import { CarrerasService } from '../../providers/carreras-service';
 import { DatabaseService } from '../../providers/database-service';
 
 /**
@@ -16,9 +16,9 @@ import { DatabaseService } from '../../providers/database-service';
 })
 export class CarrerasPage {
 
-	carreras: any[] = [];	
+  carreras: any[] = [];  
   constructor(public navCtrl: NavController,
-  		public alertCtrl: AlertController,
+      public alertCtrl: AlertController,
         public carrerasService: CarrerasService,
         public dataBaseService: DatabaseService
         ) {
@@ -48,15 +48,11 @@ export class CarrerasPage {
     })
   }
 
-  openAlertNewCarreras(){
+  openAlertNewCarrera(){
     let alert = this.alertCtrl.create({
       title: 'Crear carrera',
-      message: 'escribe el nombre de la carrera',
+      message: 'Ingresar carrera',
       inputs: [
-        {
-          name: 'id_carrera',
-          placeholder: 'Digitar id carrera.',
-        },
         {
           name: 'descripcion',
           placeholder: 'Digitar descripcion carrera.',
@@ -72,7 +68,7 @@ export class CarrerasPage {
         {
           text: 'Crear',
           handler: (data)=>{ 
-            data.estado_carrera = 1;
+            data.estadoCarrera = 1;
             this.carrerasService.create(data)
             .then(response => {
              this.getAllCarreras();
@@ -96,6 +92,42 @@ export class CarrerasPage {
           console.error(error)
         });
     }
+
+    openAlertUpdateCarrera(carrera){
+    let alert = this.alertCtrl.create({
+      title: 'Carreras',
+      message: 'Modificar carrera',
+      inputs: [
+        {
+          name: 'descripcion',
+          placeholder: 'Digitar descripcion carrera.',
+          value: carrera.descripcion
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          handler: () =>{
+            console.log('cancelar');
+          }
+        },
+        {
+          text: 'Modificar',
+          handler: (data)=>{ 
+            data.id_carreras = carrera.id_carreras;
+            this.carrerasService.update(data)
+            .then(response => {
+               this.getAllCarreras();
+            })
+            .catch( error => {
+              console.error( error );
+            })
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
 
 
 }
