@@ -11,6 +11,7 @@ import { ApuntesPage } from '../pages/apuntes/apuntes';
 import { PendientesPage } from '../pages/pendientes/pendientes';
 import { CrearApuntePage } from '../pages/crear-apunte/crear-apunte';
 import { CarrerasPage } from '../pages/carreras/carreras';
+import { CrearMateriasProfesoresPage } from '../pages/crear-materias-profesores/crear-materias-profesores';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -38,7 +39,8 @@ import { Camera } from '@ionic-native/camera';
     ApuntesPage,
     PendientesPage,
     CrearApuntePage,
-    CarrerasPage
+    CarrerasPage,
+    CrearMateriasProfesoresPage
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,8 @@ import { Camera } from '@ionic-native/camera';
     ApuntesPage,
     PendientesPage,
     CrearApuntePage,
-    CarrerasPage
+    CarrerasPage,
+    CrearMateriasProfesoresPage
   ],
   providers: [
     StatusBar,

@@ -3,6 +3,7 @@ import { NavController, AlertController } from 'ionic-angular';
 
 import { MateriasService } from '../../providers/materias-service';
 import { DatabaseService } from '../../providers/database-service';
+import { CrearMateriasProfesoresPage } from '../crear-materias-profesores/crear-materias-profesores';
 
 @Component({
   selector: 'page-materias',
@@ -21,6 +22,11 @@ export class MateriasPage {
 
 
   ionViewDidLoad(){
+    this.getAllMaterias();
+  }
+
+  ionViewWillEnter() {
+    console.log("ionViewWillEnter");
     this.getAllMaterias();
   }
 
@@ -115,6 +121,10 @@ export class MateriasPage {
       ]
     });
     alert.present();
+  }
+
+  crearMateriaDocente(){
+    this.navCtrl.push(CrearMateriasProfesoresPage);
   }
 
 }

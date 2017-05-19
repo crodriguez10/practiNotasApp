@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Crear Materias
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+ 
+<ion-content class="home" padding>
+    <form [formGroup]="formCrearMateriaProfesor" (ngSubmit)="guardarMateriaDocente(formCrearMateriaProfesor.value)">
+        <ion-item>
+            <ion-label floating>Nombre materia</ion-label>
+            <ion-input type="text" value="" name="descripcion" formControlName="descripcion"></ion-input>         
+        </ion-item>
+        <ion-item>
+          <ion-label>Docente</ion-label>
+            <ion-select  formControlName="id_docente" name="id_docente">
+            <ion-option *ngFor="let docente of docentes" [value] = "docente.id_docentes">{{docente.nombres}} {{docente.primer_apellido}}</ion-option>
+          </ion-select>
+            <button ion-button item-right (click)="crearDocente()">
+                <ion-icon name="add-circle"></ion-icon>
+            </button> 
+      </ion-item>
+       
+        <br/><br/> 
+        <button ion-button type="submit" class="custom-button" block [disabled]="!isValidForm()">Guardar</button>
+    </form>
+</ion-content>

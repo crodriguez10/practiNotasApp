@@ -73,6 +73,7 @@ export class DocentesPage {
             this.docentesService.create(data)
             .then(response => {
               this.getAllDocentes();
+              this.goToBack();
             })
             .catch( error => {
               console.error( error );
@@ -145,6 +146,10 @@ export class DocentesPage {
     });
     alert.present();
   }
+
+  goToBack(){
+      this.navCtrl.pop();
+    }
 
 
 }

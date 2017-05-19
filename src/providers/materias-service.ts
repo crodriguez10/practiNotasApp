@@ -37,7 +37,14 @@ export class MateriasService {
 	create(materia: any){
 		console.log("crear registro");
 	  let sql = 'INSERT INTO materias(descripcion, estado_materia) VALUES(?,?)';
-	  return this.dbo.executeSql(sql, [materia.descripcion, materia.estado_materia]);
+	  return this.dbo.executeSql(sql, [materia.descripcion, materia.estado_materia]).
+	  then(result => {
+	  	this.dbo.executeSql("SELECT id_materias from materias ORDER BY id_materias DESC LIMIT 1",[]).then(response =>
+	  	{
+	  		console.log("response: "+response.rows.item(0).id_materias)	;
+	  	 	return response.rows.item(0).id_materias;
+	  	})
+	  });
 	}
 
 	update(materia: any){
