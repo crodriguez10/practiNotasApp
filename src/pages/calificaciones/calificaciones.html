@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar>
+      <button ion-button menuToggle >
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>Calificaciones</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+<ion-navbar color="primary">
+    <ion-buttons right>
+      <button ion-button icon-only (click)="crearCalificacionMateria()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>  
+    <ion-title>Crear Calificaciones</ion-title>
+  </ion-navbar>
+
+   <ion-list>
+     <ion-item *ngIf="calificaciones.length == 0"> 
+       No existen registros de calificaciones
+     </ion-item>
+
+
+    <ion-item-sliding *ngFor="let calificacion of calificaciones; let i = index ">
+      <ion-item >
+        <ion-label> {{ calificacion.nota }} {{ calificacion.descripcion }} {{ calificacion.materia }} </ion-label>
+        <button  ion-button item-right color="secondary" (click)="openAlertUpdateCalificacion(calificacion)" >
+          <ion-icon name="md-create"></ion-icon>
+          Update
+        </button>
+        <button ion-button item-right color="danger" (click)="deleteCalificacion(calificacion, i)" >
+          <ion-icon name="trash" ></ion-icon>
+          Delete
+        </button>
+      </ion-item>
+
+      <!--<ion-item>
+          <ion-label>Materia</ion-label>
+            <ion-select  formControlName="id_materia" name="id_materia">
+            <ion-option *ngFor="let materia of materias" [value] = "materia.id_materias">{{materia.descripcion}}</ion-option>
+          </ion-select>
+            <button ion-button item-right (click)="crearDocente()">
+                <ion-icon name="add-circle"></ion-icon>
+            </button>
+      </ion-item> -->
+        
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

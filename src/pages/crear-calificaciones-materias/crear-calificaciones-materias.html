@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>crear calificaciones materias</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="home" padding>
+    <form [formGroup]="formCrearCalificacionesMaterias" (ngSubmit)="guardarMateriaCalificacion(formCrearCalificacionesMaterias.value)">
+         <ion-item>
+            <ion-label floating>Nota calif.</ion-label>
+            <ion-input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); if(this.value >5.0 ){this.value='';}" min="0" max="5" step="0.1" maxlength="3" value="" name="nota" formControlName="nota"></ion-input>   
+            <!-- formControlName="descripcion"  ************************porq no puedo colocar q es nota en formControlName????-->   
+        </ion-item> 
+        <ion-item>
+            <ion-label floating>Descripcion</ion-label>
+            <ion-input type="text" value="" name="descripcion" formControlName="descripcion"></ion-input> 
+        </ion-item>        
+        <ion-item>
+          <ion-label>Materia</ion-label>
+            <ion-select  formControlName="id_materia" name="id_materia">
+            <ion-option *ngFor="let materia of materias" [value] = "materia.id_materias">{{materia.descripcion}}</ion-option><!--{{materia.id_materias}}-{{materia.descripcion}}</ion-option>-->
+          </ion-select>
+      </ion-item>
+        <br/><br/> 
+        <button ion-button type="submit" class="custom-button" block [disabled]="!isValidForm()">Guardar</button>
+    </form>
+</ion-content>
