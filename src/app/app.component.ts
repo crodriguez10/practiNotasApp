@@ -12,6 +12,7 @@ import { PendientesPage } from '../pages/pendientes/pendientes';
 import { CarrerasPage } from '../pages/carreras/carreras';
 import { DatabaseService } from '../providers/database-service';
 import { CalificacionesPage } from '../pages/calificaciones/calificaciones';
+import { Notificaciones } from '../pages/notificaciones/notificaciones';
 
 
 @Component({
@@ -36,7 +37,8 @@ export class MyApp {
       { title: 'Apuntes', component: ApuntesPage },
       { title: 'Pendientes', component: PendientesPage },
       { title: 'Carreras', component: CarrerasPage },
-      { title: 'Calificaciones', component: CalificacionesPage }
+      { title: 'Calificaciones', component: CalificacionesPage },
+      { title: 'Notificaciones', component: Notificaciones }
     ];
   }
 

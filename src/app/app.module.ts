@@ -14,6 +14,7 @@ import { CarrerasPage } from '../pages/carreras/carreras';
 import { CrearMateriasProfesoresPage } from '../pages/crear-materias-profesores/crear-materias-profesores';
 import { CrearCalificacionesMateriasPage } from '../pages/crear-calificaciones-materias/crear-calificaciones-materias';
 import { CalificacionesPage } from '../pages/calificaciones/calificaciones';
+import { Notificaciones } from '../pages/notificaciones/notificaciones';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -30,6 +31,7 @@ import { DocenteMateriaService } from '../providers/docente-materia-service';
 import { PendientesService } from '../providers/pendientes-service';
 import { CalificacionesService } from '../providers/calificaciones-service';
 import { MateriaCalificacionService } from '../providers/materia-calificacion-service';
+import {LocalNotifications} from "@ionic-native/local-notifications";
 
 import { Camera } from '@ionic-native/camera';
 
@@ -46,7 +48,8 @@ import { Camera } from '@ionic-native/camera';
     CarrerasPage,
     CrearMateriasProfesoresPage,
     CalificacionesPage,
-    CrearCalificacionesMateriasPage
+    CrearCalificacionesMateriasPage,
+    Notificaciones
   ],
   imports: [
     BrowserModule,
@@ -65,7 +68,8 @@ import { Camera } from '@ionic-native/camera';
     CarrerasPage,
     CrearMateriasProfesoresPage,
     CalificacionesPage,
-    CrearCalificacionesMateriasPage
+    CrearCalificacionesMateriasPage,
+    Notificaciones
   ],
   providers: [
     StatusBar,
@@ -83,7 +87,8 @@ import { Camera } from '@ionic-native/camera';
     PendientesService,
     CalificacionesService,
     MateriaCalificacionService,
-    Camera
+    Camera,
+    LocalNotifications
   ]
 })
 export class AppModule {}
