@@ -13,6 +13,9 @@ import { PendientesPage } from '../pages/pendientes/pendientes';
 import { CrearApuntePage } from '../pages/crear-apunte/crear-apunte';
 import { CarrerasPage } from '../pages/carreras/carreras';
 import { CrearMateriasProfesoresPage } from '../pages/crear-materias-profesores/crear-materias-profesores';
+import { CrearCalificacionesMateriasPage } from '../pages/crear-calificaciones-materias/crear-calificaciones-materias';
+import { CalificacionesPage } from '../pages/calificaciones/calificaciones';
+import { Notificaciones } from '../pages/notificaciones/notificaciones';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -27,6 +30,9 @@ import { CorteService } from '../providers/corte-service';
 import { CorteMateriaService } from '../providers/corte-materia-service';
 import { DocenteMateriaService } from '../providers/docente-materia-service';
 import { PendientesService } from '../providers/pendientes-service';
+import { CalificacionesService } from '../providers/calificaciones-service';
+import { MateriaCalificacionService } from '../providers/materia-calificacion-service';
+import {LocalNotifications} from "@ionic-native/local-notifications";
 
 import { Camera } from '@ionic-native/camera';
 
@@ -41,7 +47,10 @@ import { Camera } from '@ionic-native/camera';
     PendientesPage,
     CrearApuntePage,
     CarrerasPage,
-    CrearMateriasProfesoresPage
+    CrearMateriasProfesoresPage,
+    CalificacionesPage,
+    CrearCalificacionesMateriasPage,
+    Notificaciones
     ,
     CrearPendientePage
   ],
@@ -60,7 +69,10 @@ import { Camera } from '@ionic-native/camera';
     PendientesPage,
     CrearApuntePage,
     CarrerasPage,
-    CrearMateriasProfesoresPage
+    CrearMateriasProfesoresPage,
+    CalificacionesPage,
+    CrearCalificacionesMateriasPage,
+    Notificaciones
     ,
     CrearPendientePage,
   ],
@@ -78,7 +90,10 @@ import { Camera } from '@ionic-native/camera';
     CorteMateriaService,
     DocenteMateriaService,
     PendientesService,
-    Camera
+    CalificacionesService,
+    MateriaCalificacionService,
+    Camera,
+    LocalNotifications
   ]
 })
 export class AppModule {}

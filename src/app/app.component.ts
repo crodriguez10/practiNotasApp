@@ -11,6 +11,8 @@ import { ApuntesPage } from '../pages/apuntes/apuntes';
 import { PendientesPage } from '../pages/pendientes/pendientes';
 import { CarrerasPage } from '../pages/carreras/carreras';
 import { DatabaseService } from '../providers/database-service';
+import { CalificacionesPage } from '../pages/calificaciones/calificaciones';
+import { Notificaciones } from '../pages/notificaciones/notificaciones';
 
 
 @Component({
@@ -34,7 +36,9 @@ export class MyApp {
       { title: 'Docentes', component: DocentesPage },
       { title: 'Apuntes', component: ApuntesPage },
       { title: 'Pendientes', component: PendientesPage },
-      { title: 'Carreras', component: CarrerasPage }
+      { title: 'Carreras', component: CarrerasPage },
+      { title: 'Calificaciones', component: CalificacionesPage },
+      { title: 'Notificaciones', component: Notificaciones }
     ];
   }
 
@@ -53,6 +57,8 @@ export class MyApp {
       this.dataBaseService.createTableCorte();
       this.dataBaseService.createTableCorteMateria();
       this.dataBaseService.createTablePendientes();
+      this.dataBaseService.createTableCalificaciones();
+      this.dataBaseService.createTableMateriaCalificacion();
     });
   }
 

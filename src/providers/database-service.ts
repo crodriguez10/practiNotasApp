@@ -88,4 +88,16 @@ export class DatabaseService {
 		return this.dbo.executeSql(sql, []);
 	}
 
+	createTableCalificaciones(){
+		console.log('createTaableCalificaciones');
+		let sql = 'CREATE TABLE IF NOT EXISTS calificaciones(id_calificaciones INTEGER PRIMARY KEY AUTOINCREMENT, nota INTEGER, descripcion TEXT, materia INTEGER)';
+		return this.dbo.executeSql(sql, []);
+	}
+
+	createTableMateriaCalificacion(){
+		console.log('createTableMateriaCalificacion');
+		let sql = 'CREATE TABLE IF NOT EXISTS MateriaCalificacion ( id_MateriaCalificacion INTEGER PRIMARY KEY AUTOINCREMENT , id_materia INTEGER , id_calificacion INTEGER )';
+		return this.dbo.executeSql(sql, []);
+	}
+
 }
