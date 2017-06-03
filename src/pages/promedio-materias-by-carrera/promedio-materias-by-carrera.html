@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Crear pendientes
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+ 
+<ion-content class="home" padding>
+    <form>
+        
+        <ion-item>
+          <ion-label>Carreras</ion-label>
+            <ion-select  [(ngModel)]="id_Carrera" name="id_carreras">
+            <ion-option *ngFor="let carrera of carreras" [value] = "carrera.id_carreras">{{carrera.descripcion}}</ion-option>
+          </ion-select>
+          <button ion-button item-right (click)="buscarMaterias()">
+                <ion-icon name="add-circle"></ion-icon>
+            </button> 
+      </ion-item>
+        <ion-list>
+     <ion-item *ngIf="materias.length == 0"> 
+       No existen registros de materias
+     </ion-item>
+
+ <ion-item-sliding *ngFor="let materia of materias; let i = index ">
+      <ion-item >
+        <ion-label> {{ materia.descripcion }} </ion-label>
+        <ion-label> {{ materia.promedio }} </ion-label>     
+        
+      </ion-item>
+        
+    </ion-item-sliding>
+  </ion-list>
+     
+    </form>
+</ion-content>
+
+

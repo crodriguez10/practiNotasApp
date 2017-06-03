@@ -33,7 +33,7 @@ import { PendientesService } from '../providers/pendientes-service';
 import { CalificacionesService } from '../providers/calificaciones-service';
 import { MateriaCalificacionService } from '../providers/materia-calificacion-service';
 import {LocalNotifications} from "@ionic-native/local-notifications";
-
+import { PromedioMateriasByCarrera } from '../pages/promedio-materias-by-carrera/promedio-materias-by-carrera';
 import { Camera } from '@ionic-native/camera';
 
 @NgModule({
@@ -52,7 +52,8 @@ import { Camera } from '@ionic-native/camera';
     CrearCalificacionesMateriasPage,
     Notificaciones
     ,
-    CrearPendientePage
+    CrearPendientePage,
+    PromedioMateriasByCarrera
   ],
   imports: [
     BrowserModule,
@@ -75,6 +76,7 @@ import { Camera } from '@ionic-native/camera';
     Notificaciones
     ,
     CrearPendientePage,
+    PromedioMateriasByCarrera
   ],
   providers: [
     StatusBar,
