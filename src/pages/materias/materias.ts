@@ -67,6 +67,7 @@ export class MateriasPage {
             .then(response => {
               //this.materias.unshift( data );
               this.getAllMaterias();
+              this.goToBack();
             })
             .catch( error => {
               console.error( error );
@@ -126,6 +127,9 @@ export class MateriasPage {
   crearMateriaDocente(){
     this.navCtrl.push(CrearMateriasProfesoresPage);
   }
+  goToBack(){
+      this.navCtrl.pop();
+    }
 
 }
 

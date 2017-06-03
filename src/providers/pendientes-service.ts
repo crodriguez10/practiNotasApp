@@ -24,15 +24,15 @@ export class PendientesService {
 
 	create(pendiente: any){
 		console.log("crear registro Pendiente descripcion:"+pendiente.descripcion);
-	  let sql = 'INSERT INTO pendientes(id_materia  , descripcion  , fechaEvento  , estadoEvento ) VALUES(?,?,?,?)';
-	  return this.dbo.executeSql(sql, [pendiente.id_materia  , pendiente.descripcion  , pendiente.fechaEvento  , pendiente.estadoEvento ]);
+	  let sql = 'INSERT INTO pendientes(id_materia  , descripcion  , estadoEvento,horaEvento , diaEvento  ) VALUES(?,?,?,?,?)';
+	  return this.dbo.executeSql(sql, [pendiente.id_materia  , pendiente.descripcion   , pendiente.estadoEvento,pendiente.horaEvento , pendiente.diaEvento  ]);
 
 	}
 
 	update(pendiente: any){
 		console.log("update pendientes"+pendiente.id_pendientes);
-	  	let sql = 'UPDATE pendientes SET id_materia= ?  , descripcion= ?  , fechaEvento= ?  , estadoEvento= ?  WHERE id_pendientes=?';
-	  	return this.dbo.executeSql(sql, [pendiente.id_materia  , pendiente.descripcion  , pendiente.fechaEvento  , pendiente.estadoEvento, pendiente.id_pendientes]);
+	  	let sql = 'UPDATE pendientes SET id_materia= ?  , descripcion= ?   , estadoEvento= ? , horaEvento =?, diaEvento =? WHERE id_pendientes=?';
+	  	return this.dbo.executeSql(sql, [pendiente.id_materia  , pendiente.descripcion    , pendiente.estadoEvento,pendiente.horaEvento , pendiente.diaEvento , pendiente.id_pendientes]);
 	}
 
 	delete(pendiente: any){
