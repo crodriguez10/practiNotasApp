@@ -27,7 +27,9 @@ export class CrearApuntePage {
     	public materiasService: MateriasService,
     	public dataBaseService: DatabaseService,
     	public apuntesService: ApuntesService,
-    	private camera: Camera) {
+    	private camera: Camera
+        ) 
+        {
         this.navController = navController;
         this.validations(this.fb);
         materiasService.setDbo(dataBaseService.getDbo());

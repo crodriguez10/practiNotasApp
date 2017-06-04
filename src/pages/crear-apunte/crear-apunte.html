@@ -15,7 +15,7 @@
         <ion-item>
           <ion-label>Materia</ion-label>
             <ion-select  formControlName="id_materia" name="id_materia">
-            <ion-option *ngFor="let materia of materias" [value] = "materia.id_materia">{{materia.descripcion}}</ion-option>
+            <ion-option *ngFor="let materia of materias" [value] = "materia.id_materias">{{materia.descripcion}}</ion-option>
           </ion-select>
       </ion-item>
         <button type="button" ion-button block icon-only (click)="getPicture()">

@@ -8,6 +8,7 @@ import { ListPage } from '../pages/list/list';
 import { MateriasPage } from '../pages/materias/materias';
 import { DocentesPage } from '../pages/docentes/docentes';
 import { ApuntesPage } from '../pages/apuntes/apuntes';
+import { CrearPendientePage } from '../pages/crear-pendiente/crear-pendiente';
 import { PendientesPage } from '../pages/pendientes/pendientes';
 import { CrearApuntePage } from '../pages/crear-apunte/crear-apunte';
 import { CarrerasPage } from '../pages/carreras/carreras';
@@ -16,6 +17,7 @@ import { CrearCalificacionesMateriasPage } from '../pages/crear-calificaciones-m
 import { CalificacionesPage } from '../pages/calificaciones/calificaciones';
 import { Notificaciones } from '../pages/notificaciones/notificaciones';
 import { CrearCarreraMateriaPage } from '../pages/crear-carrera-materia/crear-carrera-materia';
+import { VisualizarApuntesPage } from '../pages/visualizar-apuntes/visualizar-apuntes';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -33,7 +35,7 @@ import { PendientesService } from '../providers/pendientes-service';
 import { CalificacionesService } from '../providers/calificaciones-service';
 import { MateriaCalificacionService } from '../providers/materia-calificacion-service';
 import {LocalNotifications} from "@ionic-native/local-notifications";
-
+import { PromedioMateriasByCarrera } from '../pages/promedio-materias-by-carrera/promedio-materias-by-carrera';
 import { Camera } from '@ionic-native/camera';
 
 @NgModule({
@@ -51,7 +53,10 @@ import { Camera } from '@ionic-native/camera';
     CalificacionesPage,
     CrearCalificacionesMateriasPage,
     Notificaciones,
-    CrearCarreraMateriaPage
+    CrearCarreraMateriaPage,
+    CrearPendientePage,
+    PromedioMateriasByCarrera,
+    VisualizarApuntesPage
   ],
   imports: [
     BrowserModule,
@@ -72,7 +77,10 @@ import { Camera } from '@ionic-native/camera';
     CalificacionesPage,
     CrearCalificacionesMateriasPage,
     Notificaciones,
-    CrearCarreraMateriaPage
+    CrearCarreraMateriaPage,
+    CrearPendientePage,
+    PromedioMateriasByCarrera,
+    VisualizarApuntesPage
   ],
   providers: [
     StatusBar,

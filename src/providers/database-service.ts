@@ -21,7 +21,7 @@ export class DatabaseService {
 	
 	openDatabase(){
 	  return this.db.create({
-		  name: 'database_v2.db',
+		  name: 'database_v3.db',
 		  location: 'default'
 		}).then((db: SQLiteObject) =>{
 
@@ -84,7 +84,7 @@ export class DatabaseService {
 	
 	createTablePendientes(){
 		console.log('createTablePendientes');
-		let sql = 'CREATE TABLE IF NOT EXISTS pendientes ( id_pendientes INTEGER PRIMARY KEY AUTOINCREMENT , id_materia INTEGER , descripcion TEXT , fechaEvento DATE , estadoEvento INTEGER )';
+		let sql = 'CREATE TABLE IF NOT EXISTS pendientes ( id_pendientes INTEGER PRIMARY KEY AUTOINCREMENT , id_materia INTEGER , descripcion TEXT , horaEvento TEXT, diaEvento TEXT , estadoEvento INTEGER )';
 		return this.dbo.executeSql(sql, []);
 	}
 

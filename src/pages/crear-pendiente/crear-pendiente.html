@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Crear pendientes
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+ 
+<ion-content class="home" padding>
+    <form [formGroup]="formCrearPendiente" (ngSubmit)="guardarPendiente(formCrearPendiente.value)">
+        <ion-item>
+            <ion-label floating>descripcion</ion-label>
+            <ion-input type="text" value="" name="descripcion" [(ngModel)]="descripcion" formControlName="descripcion"></ion-input>         
+        </ion-item>
+        <ion-item>
+          <ion-label>Materia</ion-label>
+            <ion-select  formControlName="id_materia" name="id_materia">
+            <ion-option *ngFor="let materia of materias" [value] = "materia.id_materia">{{materia.descripcion}}</ion-option>
+          </ion-select>
+          <button ion-button item-right (click)="crearMateria()">
+                <ion-icon name="add-circle"></ion-icon>
+            </button> 
+      </ion-item>
+
+      <ion-item>
+         <ion-label>Hora del Pendiente: </ion-label>
+         <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="notifyTime" (ionChange)="timeChange($event)"
+         formControlName="horaEvento"></ion-datetime>
+       </ion-item>
+
+       <ion-item>
+           <ion-label>Dia de Pendiente:</ion-label>
+       </ion-item>
+        <ion-item>
+            <ion-select  [(ngModel)]="diaSeleccionado"
+                     formControlName="diaEvento">
+            <ion-option *ngFor="let day of days" [value] = "day.title">{{day.title}}</ion-option>
+            </ion-select>
+       </ion-item> 
+        
+        <br/><br/> 
+        <button ion-button type="submit" class="custom-button" block [disabled]="!isValidForm()">Guardar</button>
+    </form>
+</ion-content>
+

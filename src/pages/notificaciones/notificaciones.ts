@@ -20,7 +20,8 @@ export class Notificaciones {
     constructor(public navCtrl: NavController,
     			public platform: Platform,
     			public alertCtrl: AlertController,
-    			public localNotifications:LocalNotifications) {
+    			public localNotifications:LocalNotifications
+                ) {
  
         this.notifyTime = moment(new Date()).format();
  

@@ -31,7 +31,7 @@ export class MateriasService {
 	      materias.push( response.rows.item(index) );
 	    }
 	    return Promise.resolve( materias );
-	  })
+	  });
 	}
 
 	create(materia: any){
@@ -56,6 +56,21 @@ export class MateriasService {
 	delete(materia: any){
 	  let sql = 'DELETE FROM materias WHERE id_materias=?';
 	  return this.dbo.executeSql(sql, [materia.id_materias]);
+	}
+
+	materiasbyCarrera(id_carrera:any){
+		let sql = 'select distinct (materias.descripcion) as descripcion,AVG(calificaciones.nota) as promedio from materias , calificaciones , carreraMateria where materias.id_materias = calificaciones.materia and  carreraMateria.id_materia = materias.id_materias  and carreraMateria.id_carrera = ?';
+		return this.dbo.executeSql(sql, [id_carrera])
+		.then(response => {
+	    let materias = [];
+	    console.log("Response"+response.rows.length);
+	    for (let index = 0; index < response.rows.length; index++) {
+	      materias.push( response.rows.item(index) );
+	      console.log("Item"+response.rows.item(index));
+	      console.log("Item"+response.rows.item(index).descripcion);
+	    }
+	    return Promise.resolve( materias );
+	  });
 	}
 
 }

@@ -39,6 +39,11 @@ export class CrearCarreraMateriaPage {
     this.getAllMaterias();
   }
 
+  ionViewWillEnter() {
+    console.log("ionViewWillEnter");
+    this.getAllMaterias();
+  }
+
   	/*
 	  *Traer todas la materias
 	  */

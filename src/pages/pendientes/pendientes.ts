@@ -3,6 +3,7 @@ import { NavController, AlertController } from 'ionic-angular';
 //import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PendientesService } from '../../providers/pendientes-service';
 import { DatabaseService } from '../../providers/database-service';
+import { CrearPendientePage } from '../crear-pendiente/crear-pendiente';
 /**
  * Generated class for the Pendientes page.
  *
@@ -17,12 +18,20 @@ import { DatabaseService } from '../../providers/database-service';
 export class PendientesPage {
 
   pendientes: any[] = [];
-	constructor(public navCtrl: NavController, public alertCtrl: AlertController, public dataBaseService: DatabaseService, public pendientesService: PendientesService) {
+	constructor(public navCtrl: NavController, 
+    public alertCtrl: AlertController, 
+    public dataBaseService: DatabaseService, 
+    public pendientesService: PendientesService) {
 		pendientesService.setDbo(dataBaseService.getDbo());
+    this.navCtrl = navCtrl;
 	}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Pendientes');
+    this.getAllPendientes();
+  }
+  ionViewWillEnter() {
+    console.log("ionViewWillEnter");
     this.getAllPendientes();
   }
 
@@ -44,10 +53,10 @@ export class PendientesPage {
       title: 'Registrar pendiente',
       message: 'escribe el nombre del pendiente',
       inputs: [
-        {
+       /* {
           name: 'id_materia',
           placeholder: 'Digitar Materia.',
-        },
+        },*/
         {
           name: 'descripcion',
           placeholder: 'Digitar Descripcion.',
@@ -83,6 +92,9 @@ export class PendientesPage {
     alert.present();
   }
 
+crearPendientes(){
+    this.navCtrl.push(CrearPendientePage);
+  }
  deletePendiente(pendiente: any, index){
         this.pendientesService.delete(pendiente)
         .then(response =>{ 
@@ -93,7 +105,7 @@ export class PendientesPage {
         });
     }
 
-
+/*
     openAlertUpdatePendiente(pendiente: any, index){
     let alert = this.alertCtrl.create({
       title: 'Actualizar pendiente',
@@ -138,7 +150,7 @@ export class PendientesPage {
       ]
     });
     alert.present();
-  }
+  }*/
 
 
 

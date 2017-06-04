@@ -10,7 +10,7 @@
 <ion-content>
 <ion-navbar color="primary">
     <ion-buttons right>
-      <button ion-button icon-only (click)="openAlertNewPendiente()">
+      <button ion-button icon-only (click)="crearPendientes()">
         <ion-icon name="add"></ion-icon>
       </button>
     </ion-buttons>  
@@ -24,13 +24,8 @@
 
       <ion-item-sliding *ngFor="let pendiente of pendientes; let i = index ">
       <ion-item >
-        <ion-label>{{ pendiente.id_materia }} {{ pendiente.descripcion }}</ion-label>
-        <button  ion-button item-right color="secondary" (click)="openAlertUpdatePendiente(pendiente)" >
-          <ion-icon name="md-create"></ion-icon>
-          Update
-        </button>
-        <button ion-button item-right color="danger" (click)="deletePendiente(pendiente, i)" >
-          <ion-icon name="trash" ></ion-icon>
+        <ion-label>{{ pendiente.descripcion }}</ion-label>
+        <button ion-button item-right color="danger" (click)="deletePendiente(pendiente, i)" > <ion-icon name="trash" ></ion-icon>
           Delete
         </button>
       </ion-item>

@@ -13,16 +13,12 @@ export class HomePage {
 
 	constructor(public navCtrl: NavController,
 				public alert: AlertController,
-				private localNotifications: LocalNotifications) {
+				private localNotifications: LocalNotifications
+				) {
 
 
 		this.localNotifications.on("click", (notification, state) => {
-		    /*let alert = this.alert.create({
-		        title: "Notification Clicked",
-		        subTitle: "You just clicked the scheduled notification",
-		        buttons: ["OK"]
-		    });
-		    alert.present();*/
+		    
 		    this.navCtrl.push(ApuntesPage);
 		});
 	}

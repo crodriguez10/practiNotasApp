@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+      <button ion-button menuToggle >
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>Visualizar Apuntes</ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content>
+ 
+    <ion-list no-lines>
+ 
+        <ion-item>
+            <ion-label>Materia:</ion-label>
+            <ion-label>{{descripcion_materia}}</ion-label>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Descripcion apunte:</ion-label>
+            <ion-label>{{descripcion_apunte}}</ion-label>
+        </ion-item>
+ 
+    </ion-list>
+
+    <ion-item>
+    	<ion-label>Imagen:</ion-label>
+    </ion-item>
+    <ion-content padding>
+  		<img [src]="image" *ngIf="image" />
+	</ion-content>
+
+ 
+</ion-content>

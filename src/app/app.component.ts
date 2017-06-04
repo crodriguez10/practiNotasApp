@@ -12,7 +12,7 @@ import { PendientesPage } from '../pages/pendientes/pendientes';
 import { CarrerasPage } from '../pages/carreras/carreras';
 import { DatabaseService } from '../providers/database-service';
 import { CalificacionesPage } from '../pages/calificaciones/calificaciones';
-import { Notificaciones } from '../pages/notificaciones/notificaciones';
+import { PromedioMateriasByCarrera } from '../pages/promedio-materias-by-carrera/promedio-materias-by-carrera';
 
 
 @Component({
@@ -38,7 +38,7 @@ export class MyApp {
       { title: 'Pendientes', component: PendientesPage },
       { title: 'Carreras', component: CarrerasPage },
       { title: 'Calificaciones', component: CalificacionesPage },
-      { title: 'Notificaciones', component: Notificaciones }
+      { title: 'Promedio Materia', component: PromedioMateriasByCarrera }
     ];
   }
 
