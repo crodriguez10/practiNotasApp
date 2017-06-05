@@ -6,6 +6,7 @@ import { CalificacionesService } from '../../providers/calificaciones-service';
 import { MateriasService } from '../../providers/materias-service';
 import { MateriaCalificacionService } from '../../providers/materia-calificacion-service';
 import { MateriasPage } from '../materias/materias';
+import { CorteMateriaService } from '../../providers/corte-materia-service';
 
 /**
  * Generated class for the CrearCalificacionesMaterias page.
@@ -20,19 +21,23 @@ import { MateriasPage } from '../materias/materias';
 export class CrearCalificacionesMateriasPage {
 
   materias: any[] = [];
+  cortes_materias: any[] = [];
+  id_materia:number;
   formCrearCalificacionesMaterias: FormGroup;
   constructor(private navController: NavController,
               private fb: FormBuilder,
     	        public materiasService: MateriasService,
     	        public calificacionService: CalificacionesService,
     	        public dataBaseService: DatabaseService,
-    	        public materiaCalificacionService: MateriaCalificacionService) {
+    	        public materiaCalificacionService: MateriaCalificacionService,
+              public corteMateriaService: CorteMateriaService) {
         //his.formCrearCalificacionesMaterias = this.fb.group({nota:[''],});
         this.navController = navController;
         this.validations(this.fb);
         materiasService.setDbo(dataBaseService.getDbo());
         calificacionService.setDbo(dataBaseService.getDbo());
         materiaCalificacionService.setDbo(dataBaseService.getDbo());
+        corteMateriaService.setDbo(dataBaseService.getDbo());
         
     }
 
@@ -54,6 +59,15 @@ export class CrearCalificacionesMateriasPage {
 		      this.materias = materias;
 	    })
   	}
+
+    getCorteByIdMateria(){
+      console.log("getAllApuntes");
+      this.corteMateriaService.getCorteByIdMateria(this.id_materia)
+      .then(cortes_materias => {
+        console.log("corte_materia: "+cortes_materias);
+        this.cortes_materias = cortes_materias;
+      });
+  }
 
     guardarMateriaCalificacion(data: any){ 
       console.log("guardarMateriaCalificacion"+data);
@@ -88,7 +102,8 @@ export class CrearCalificacionesMateriasPage {
       this.formCrearCalificacionesMaterias = fb.group({  
             'nota': ['', Validators.required],
             'id_materia': ['', Validators.required],
-            'descripcion': ['', Validators.required]
+            'descripcion': ['', Validators.required],
+            'id_corte_materia': ['', Validators.required]
 
         });
     }
@@ -103,6 +118,10 @@ export class CrearCalificacionesMateriasPage {
         }
         return false;
         
+    }
+    onChangeMateria(){
+      console.log("cambio combo materia:");
+      this.getCorteByIdMateria();
     }
 
 }

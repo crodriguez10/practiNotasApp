@@ -11,6 +11,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { MateriasService } from '../../providers/materias-service';
 import { DatabaseService } from '../../providers/database-service';
+import { CrearMateriasProfesoresPage } from '../crear-materias-profesores/crear-materias-profesores';
 var MateriasPage = (function () {
     function MateriasPage(navCtrl, alertCtrl, materiasService, dataBaseService) {
         this.navCtrl = navCtrl;
@@ -56,10 +57,12 @@ var MateriasPage = (function () {
                 {
                     text: 'Crear',
                     handler: function (data) {
-                        data.completed = false;
+                        data.estado_materia = 1;
                         _this.materiasService.create(data)
                             .then(function (response) {
-                            _this.materias.unshift(data);
+                            //this.materias.unshift( data );
+                            _this.getAllMaterias();
+                            _this.goToBack();
                         })
                             .catch(function (error) {
                             console.error(error);
@@ -79,6 +82,47 @@ var MateriasPage = (function () {
             .catch(function (error) {
             console.error(error);
         });
+    };
+    MateriasPage.prototype.openAlertUpdateMateria = function (materia) {
+        var _this = this;
+        var alert = this.alertCtrl.create({
+            title: 'Modificar materia',
+            message: 'escribe el nombre de la materia',
+            inputs: [
+                {
+                    name: 'descripcion',
+                    value: materia.descripcion,
+                }
+            ],
+            buttons: [
+                {
+                    text: 'Cancelar',
+                    handler: function () {
+                        console.log('cancelar');
+                    }
+                },
+                {
+                    text: 'Modificar',
+                    handler: function (data) {
+                        data.id_materias = materia.id_materias;
+                        _this.materiasService.update(data)
+                            .then(function (response) {
+                            _this.getAllMaterias();
+                        })
+                            .catch(function (error) {
+                            console.error(error);
+                        });
+                    }
+                }
+            ]
+        });
+        alert.present();
+    };
+    MateriasPage.prototype.crearMateriaDocente = function () {
+        this.navCtrl.push(CrearMateriasProfesoresPage);
+    };
+    MateriasPage.prototype.goToBack = function () {
+        this.navCtrl.pop();
     };
     return MateriasPage;
 }());

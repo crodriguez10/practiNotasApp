@@ -34,17 +34,39 @@ var MateriasService = (function () {
         });
     };
     MateriasService.prototype.create = function (materia) {
+        var _this = this;
         console.log("crear registro");
         var sql = 'INSERT INTO materias(descripcion, estado_materia) VALUES(?,?)';
-        return this.dbo.executeSql(sql, [materia.descripcion, materia.estado_materia]);
+        return this.dbo.executeSql(sql, [materia.descripcion, materia.estado_materia]).
+            then(function (result) {
+            _this.dbo.executeSql("SELECT id_materias from materias ORDER BY id_materias DESC LIMIT 1", []).then(function (response) {
+                console.log("response: " + response.rows.item(0).id_materias);
+                return response.rows.item(0).id_materias;
+            });
+        });
     };
     MateriasService.prototype.update = function (materia) {
-        var sql = 'UPDATE materias SET descripcion=?, estado_materia=? WHERE id=?';
-        return this.dbo.executeSql(sql, [materia.descripcion, materia.estado_materia, materia.id]);
+        console.log("update materias" + materia.id_materias);
+        var sql = 'UPDATE materias SET descripcion=?, estado_materia=? WHERE id_materias=?';
+        return this.dbo.executeSql(sql, [materia.descripcion, materia.estado_materia, materia.id_materias]);
     };
     MateriasService.prototype.delete = function (materia) {
-        var sql = 'DELETE FROM materias WHERE id=?';
-        return this.dbo.executeSql(sql, [materia.id]);
+        var sql = 'DELETE FROM materias WHERE id_materias=?';
+        return this.dbo.executeSql(sql, [materia.id_materias]);
+    };
+    MateriasService.prototype.materiasbyCarrera = function (id_carrera) {
+        var sql = 'select distinct (materias.descripcion) as descripcion,AVG(calificaciones.nota) as promedio from materias , calificaciones , carreraMateria where materias.id_materias = calificaciones.materia and  carreraMateria.id_materia = materias.id_materias  and carreraMateria.id_carrera = ?';
+        return this.dbo.executeSql(sql, [id_carrera])
+            .then(function (response) {
+            var materias = [];
+            console.log("Response" + response.rows.length);
+            for (var index = 0; index < response.rows.length; index++) {
+                materias.push(response.rows.item(index));
+                console.log("Item" + response.rows.item(index));
+                console.log("Item" + response.rows.item(index).descripcion);
+            }
+            return Promise.resolve(materias);
+        });
     };
     return MateriasService;
 }());

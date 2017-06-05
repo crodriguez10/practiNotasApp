@@ -18,8 +18,14 @@
         </ion-item>        
         <ion-item>
           <ion-label>Materia</ion-label>
-            <ion-select  formControlName="id_materia" name="id_materia">
+            <ion-select  [(ngModel)]="id_materia" formControlName="id_materia" name="id_materia" (change)="onChangeMateria()" >
             <ion-option *ngFor="let materia of materias" [value] = "materia.id_materias">{{materia.descripcion}}</ion-option><!--{{materia.id_materias}}-{{materia.descripcion}}</ion-option>-->
+          </ion-select>
+      </ion-item>
+      <ion-item>
+          <ion-label>Corte</ion-label>
+            <ion-select  formControlName="id_corte_materia" name="id_corte_materia">
+            <ion-option *ngFor="let corte_materia of cortes_materias" [value] = "corte_materia.id_corteMateria">{{corte_materia.descripcion_corte}}</ion-option><!--{{materia.id_materias}}-{{materia.descripcion}}</ion-option>-->
           </ion-select>
       </ion-item>
         <br/><br/> 

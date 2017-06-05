@@ -35,7 +35,7 @@ export class CorteMateriaService {
 	}
 
 	create(corteMateria: any){
-		console.log("crear registro");
+		console.log("crear registro corte materia");
 		let sql = 'INSERT INTO corteMateria(id_corte , id_materia , estadoCorteMateria) VALUES(?,?,?)';
 		return this.dbo.executeSql(sql, [corteMateria.id_corte, corteMateria.id_materia, corteMateria.estadoCorteMateria]);
 	}
@@ -49,6 +49,21 @@ export class CorteMateriaService {
 	delete(corteMateria: any){
 		let sql = 'DELETE FROM corteMateria WHERE id_corteMateria=?';
 		return this.dbo.executeSql(sql, [corteMateria.id_corteMateria]);
+	}
+
+	getCorteByIdMateria(id_materia:number){
+		let sql = 'SELECT id_corteMateria, corte.descripcion AS descripcion_corte FROM corteMateria, cortes WHERE cortes.id_corte = corteMateria.id_corte AND id_materia = ? ';
+		//let sql = 'SELECT adjunto FROM apuntes WHERE id_apuntes = ? ';
+	  console.log("consultar corte by id_materia"+sql);
+	  return this.dbo.executeSql(sql, [id_materia])
+	  .then(response =>{
+	  		console.log("response: "+response);
+	  		console.log("response: rows apunte"+response.rows);
+	  		console.log("response: apunte"+response.rows.item(0))	;
+	  		console.log("response corte: "+response.rows.item(0).descripcion)	;
+	  	 	return response.rows.item(0);
+	  });
+
 	}
 
 }

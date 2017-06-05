@@ -25,6 +25,10 @@ export class MateriasPage {
     this.getAllMaterias();
   }
 
+  ionViewWillEnter() {
+    this.getAllMaterias();
+  }
+
 
 
   /*

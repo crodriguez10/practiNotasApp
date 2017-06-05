@@ -8,11 +8,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
+import { LocalNotifications } from '@ionic-native/local-notifications';
+import { ApuntesPage } from '../apuntes/apuntes';
 var HomePage = (function () {
-    function HomePage(navCtrl) {
+    function HomePage(navCtrl, alert, localNotifications) {
+        var _this = this;
         this.navCtrl = navCtrl;
+        this.alert = alert;
+        this.localNotifications = localNotifications;
+        this.localNotifications.on("click", function (notification, state) {
+            _this.navCtrl.push(ApuntesPage);
+        });
     }
+    HomePage.prototype.addNotifications = function () {
+        this.localNotifications.schedule({
+            title: "Test Title",
+            text: "Delayed Notification",
+            at: new Date(new Date().getTime() + 5 * 1000),
+            sound: null
+        });
+    };
     return HomePage;
 }());
 HomePage = __decorate([
@@ -20,7 +36,9 @@ HomePage = __decorate([
         selector: 'page-home',
         templateUrl: 'home.html'
     }),
-    __metadata("design:paramtypes", [NavController])
+    __metadata("design:paramtypes", [NavController,
+        AlertController,
+        LocalNotifications])
 ], HomePage);
 export { HomePage };
 //# sourceMappingURL=home.js.map

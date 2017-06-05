@@ -14,11 +14,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { MateriasPage } from '../pages/materias/materias';
+import { DocentesPage } from '../pages/docentes/docentes';
+import { ApuntesPage } from '../pages/apuntes/apuntes';
+import { PendientesPage } from '../pages/pendientes/pendientes';
+import { CarrerasPage } from '../pages/carreras/carreras';
 import { DatabaseService } from '../providers/database-service';
+import { CalificacionesPage } from '../pages/calificaciones/calificaciones';
+import { PromedioMateriasByCarrera } from '../pages/promedio-materias-by-carrera/promedio-materias-by-carrera';
 var MyApp = (function () {
-    function MyApp(platform, statusBar, splashScreen, 
-        //public materiasService: MateriasService,
-        dataBaseService) {
+    function MyApp(platform, statusBar, splashScreen, dataBaseService) {
         this.platform = platform;
         this.statusBar = statusBar;
         this.splashScreen = splashScreen;
@@ -29,7 +33,13 @@ var MyApp = (function () {
         this.pages = [
             { title: 'Home', component: HomePage },
             { title: 'List', component: ListPage },
-            { title: 'Materias', component: MateriasPage }
+            { title: 'Materias', component: MateriasPage },
+            { title: 'Docentes', component: DocentesPage },
+            { title: 'Apuntes', component: ApuntesPage },
+            { title: 'Pendientes', component: PendientesPage },
+            { title: 'Carreras', component: CarrerasPage },
+            { title: 'Calificaciones', component: CalificacionesPage },
+            { title: 'Promedio Materia', component: PromedioMateriasByCarrera },
         ];
     }
     MyApp.prototype.initializeApp = function () {
@@ -40,7 +50,16 @@ var MyApp = (function () {
             _this.statusBar.styleDefault();
             _this.splashScreen.hide();
             _this.dataBaseService.createTableMaterias();
-            //this.materiasService.createTable();
+            _this.dataBaseService.createTableDocentes();
+            _this.dataBaseService.createTableApuntes();
+            _this.dataBaseService.createTableCarreras();
+            _this.dataBaseService.createTableCarreraMateria();
+            _this.dataBaseService.createTableDocenteMateria();
+            _this.dataBaseService.createTableCorte();
+            _this.dataBaseService.createTableCorteMateria();
+            _this.dataBaseService.createTablePendientes();
+            _this.dataBaseService.createTableCalificaciones();
+            _this.dataBaseService.createTableMateriaCalificacion();
         });
     };
     MyApp.prototype.openPage = function (page) {

@@ -18,6 +18,7 @@ import { CalificacionesPage } from '../pages/calificaciones/calificaciones';
 import { Notificaciones } from '../pages/notificaciones/notificaciones';
 import { CrearCarreraMateriaPage } from '../pages/crear-carrera-materia/crear-carrera-materia';
 import { VisualizarApuntesPage } from '../pages/visualizar-apuntes/visualizar-apuntes';
+import { CortesPage } from '../pages/cortes/cortes';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -56,7 +57,8 @@ import { Camera } from '@ionic-native/camera';
     CrearCarreraMateriaPage,
     CrearPendientePage,
     PromedioMateriasByCarrera,
-    VisualizarApuntesPage
+    VisualizarApuntesPage,
+    CortesPage
   ],
   imports: [
     BrowserModule,
@@ -80,7 +82,8 @@ import { Camera } from '@ionic-native/camera';
     CrearCarreraMateriaPage,
     CrearPendientePage,
     PromedioMateriasByCarrera,
-    VisualizarApuntesPage
+    VisualizarApuntesPage,
+    CortesPage
   ],
   providers: [
     StatusBar,

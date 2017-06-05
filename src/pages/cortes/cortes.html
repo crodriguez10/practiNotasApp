@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+      <button ion-button menuToggle >
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>Cortes</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+<ion-navbar color="primary">
+    <ion-buttons right>
+      <button ion-button icon-only (click)="openAlertNewCorte()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>  
+    <ion-title>Crear Cortes</ion-title>
+  </ion-navbar>
+
+   <ion-list>
+     <ion-item *ngIf="cortes.length == 0"> 
+       No existen registros de Cortes
+     </ion-item>
+
+ <ion-item-sliding *ngFor="let corte of cortes; let i = index ">
+      <ion-item >
+        <ion-label> {{ corte.descripcion }} </ion-label>
+        <button  ion-button item-right color="secondary" (click)="openAlertUpdateCorte(corte)" >
+          <ion-icon name="md-create"></ion-icon>
+          Update
+        </button>
+        <button ion-button item-right color="danger" (click)="deleteCorte(corte, i)" >
+          <ion-icon name="trash" ></ion-icon>
+          Delete
+        </button>
+      </ion-item>
+        
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

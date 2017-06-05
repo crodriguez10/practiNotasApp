@@ -21,6 +21,16 @@
                 <ion-icon name="add-circle"></ion-icon>
             </button> 
       </ion-item>
+
+      <ion-item>
+          <ion-label>Cortes</ion-label>
+            <ion-select  formControlName="id_cortes" name="id_cortes" multiple="true">
+            <ion-option *ngFor="let corte of cortes" [value] = "corte.id_corte">{{corte.descripcion}}</ion-option>
+          </ion-select>
+            <button ion-button item-right (click)="crearCorte()">
+                <ion-icon name="add-circle"></ion-icon>
+            </button> 
+      </ion-item>
        
         <br/><br/> 
         <button ion-button type="submit" class="custom-button" block [disabled]="!isValidForm()">Guardar</button>
