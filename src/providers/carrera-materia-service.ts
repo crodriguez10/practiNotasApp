@@ -35,7 +35,7 @@ export class CarreraMateriaService {
 	}
 
 	create(carreraMateria: any){
-		console.log("crear registro");
+		console.log("crear registro carreraMateria");
 		let sql = 'INSERT INTO carreraMateria(id_carrera , id_materia , estadoCarreraMateria) VALUES(?,?,?)';
 		return this.dbo.executeSql(sql, [carreraMateria.id_carrera, carreraMateria.id_materia, carreraMateria.estadoCarreraMateria]);
 	}

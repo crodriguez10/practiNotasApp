@@ -25,10 +25,7 @@ export class MateriasPage {
     this.getAllMaterias();
   }
 
-  ionViewWillEnter() {
-    console.log("ionViewWillEnter");
-    this.getAllMaterias();
-  }
+
 
   /*
   *Traer todas la materias

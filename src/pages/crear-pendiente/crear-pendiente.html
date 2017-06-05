@@ -10,7 +10,7 @@
     <form [formGroup]="formCrearPendiente" (ngSubmit)="guardarPendiente(formCrearPendiente.value)">
         <ion-item>
             <ion-label floating>descripcion</ion-label>
-            <ion-input type="text" value="" name="descripcion" formControlName="descripcion"></ion-input>         
+            <ion-input type="text" value="" name="descripcion" [(ngModel)]="descripcion" formControlName="descripcion"></ion-input>         
         </ion-item>
         <ion-item>
           <ion-label>Materia</ion-label>

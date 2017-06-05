@@ -26,9 +26,9 @@
     <ion-item-sliding *ngFor="let apunte of apuntes; let i = index ">
       <ion-item >
         <ion-label> {{ apunte.descripcion }} </ion-label>
-        <button  ion-button item-right color="secondary" (click)="openAlertUpdateApunte(apunte)" >
-          <ion-icon name="md-create"></ion-icon>
-          Update
+        <button  ion-button item-right color="light" (click)="visualizarApunte(apunte.id_apuntes)" >
+          <ion-icon name="md-eye"></ion-icon>
+          Ver
         </button>
         <button ion-button item-right color="danger" (click)="deleteApunte(apunte, i)" >
           <ion-icon name="trash" ></ion-icon>

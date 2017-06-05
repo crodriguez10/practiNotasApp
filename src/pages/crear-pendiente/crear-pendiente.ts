@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Platform } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { MateriasService } from '../../providers/materias-service';
 import { DatabaseService } from '../../providers/database-service';
 import { PendientesService } from '../../providers/pendientes-service';
 //import { Camera, CameraOptions } from '@ionic-native/camera';
 import { MateriasPage } from '../materias/materias';
+import {LocalNotifications} from '@ionic-native/local-notifications';
+import * as moment from 'moment';
 /**
  * Generated class for the CrearPendiente page.
  *
@@ -23,10 +25,16 @@ export class CrearPendientePage {
     days: any[];
     chosenHours: number;
    chosenMinutes: number;
+   notifyTime: any;
+    notifications: any[] = [];
+    diaSeleccionado: any;
+    descripcion: string;
   constructor(private navController: NavController, private fb: FormBuilder,
     	public materiasService: MateriasService,
     	public dataBaseService: DatabaseService,
-    	public pendientesService: PendientesService){
+    	public pendientesService: PendientesService,
+      public platform: Platform,
+      public localNotifications: LocalNotifications ){
     	//private camera: Camera) 
     	
         this.navController = navController;
@@ -44,6 +52,8 @@ export class CrearPendientePage {
        ];
        this.chosenHours = new Date().getHours();
        this.chosenMinutes = new Date().getMinutes();
+
+       this.notifyTime = moment(new Date()).format();
   }
 
   ionViewDidLoad() {
@@ -68,6 +78,7 @@ export class CrearPendientePage {
             console.log('Submitted value: '+ data.descripcion);
             data.estado_pendiente = 1;
             this.pendientesService.create(data);
+            this.addNotifications();
             this.goToBack();
         }
     }
@@ -92,13 +103,69 @@ export class CrearPendientePage {
         
     }
 
-    timeChange(time){
-this.chosenHours = time.hour.value;
-     this.chosenMinutes = time.minute.value;
+   timeChange(time){
+      this.chosenHours = time.hour.value;
+       this.chosenMinutes = time.minute.value;
    }
 
   crearMateria(){
     this.navController.push(MateriasPage);
   }
 
+  addNotifications(){
+ 
+    let currentDate = new Date();
+    let currentDay = currentDate.getDay(); // Sunday = 0, Monday = 1, etc.
+     console.log("this.diaSeleccionado: "+this.diaSeleccionado);
+    for(let day of this.days){
+         console.log("day: "+day)
+        if(day.title == this.diaSeleccionado){
+ 
+            let firstNotificationTime = new Date();
+            let dayDifference = day.dayCode - currentDay;
+ 
+            if(dayDifference < 0){
+                dayDifference = dayDifference + 7; // for cases where the day is in the following week
+            }
+ 
+            firstNotificationTime.setHours(firstNotificationTime.getHours() + (24 * (dayDifference)));
+            firstNotificationTime.setHours(this.chosenHours);
+            firstNotificationTime.setMinutes(this.chosenMinutes);
+ 
+            console.log("descripcion: "+this.descripcion);
+            let notification = {
+                id: day.dayCode,
+                title: 'Recuerda!',
+                text: this.descripcion,
+                at: firstNotificationTime,
+                every: 0
+            };
+ 
+            this.notifications.push(notification);
+ 
+        }
+
+ 
+    }
+
+    console.log("Notifications to be scheduled: ", this.notifications);
+ 
+    if(this.platform.is('cordova')){
+ 
+            // Cancel any existing notifications
+            this.localNotifications.cancelAll().then(() => {
+     
+                // Schedule the new notifications
+                this.localNotifications.schedule(this.notifications);
+     
+                //this.notifications = [];
+     
+     
+            });
+     
+        }
+     
+    }
+ 
+    
 }

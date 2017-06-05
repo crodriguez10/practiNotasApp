@@ -3,6 +3,7 @@ import { NavController, AlertController } from 'ionic-angular';
 
 import { CarrerasService } from '../../providers/carreras-service';
 import { DatabaseService } from '../../providers/database-service';
+import { CrearCarreraMateriaPage } from '../crear-carrera-materia/crear-carrera-materia';
 
 /**
  * Generated class for the carreras page.
@@ -127,6 +128,10 @@ export class CarrerasPage {
       ]
     });
     alert.present();
+  }
+
+  crearCarrera(){
+    this.navCtrl.push(CrearCarreraMateriaPage);
   }
 
 

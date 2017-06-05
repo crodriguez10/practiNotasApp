@@ -16,6 +16,8 @@ import { CrearMateriasProfesoresPage } from '../pages/crear-materias-profesores/
 import { CrearCalificacionesMateriasPage } from '../pages/crear-calificaciones-materias/crear-calificaciones-materias';
 import { CalificacionesPage } from '../pages/calificaciones/calificaciones';
 import { Notificaciones } from '../pages/notificaciones/notificaciones';
+import { CrearCarreraMateriaPage } from '../pages/crear-carrera-materia/crear-carrera-materia';
+import { VisualizarApuntesPage } from '../pages/visualizar-apuntes/visualizar-apuntes';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -50,10 +52,11 @@ import { Camera } from '@ionic-native/camera';
     CrearMateriasProfesoresPage,
     CalificacionesPage,
     CrearCalificacionesMateriasPage,
-    Notificaciones
-    ,
+    Notificaciones,
+    CrearCarreraMateriaPage,
     CrearPendientePage,
-    PromedioMateriasByCarrera
+    PromedioMateriasByCarrera,
+    VisualizarApuntesPage
   ],
   imports: [
     BrowserModule,
@@ -73,10 +76,11 @@ import { Camera } from '@ionic-native/camera';
     CrearMateriasProfesoresPage,
     CalificacionesPage,
     CrearCalificacionesMateriasPage,
-    Notificaciones
-    ,
+    Notificaciones,
+    CrearCarreraMateriaPage,
     CrearPendientePage,
-    PromedioMateriasByCarrera
+    PromedioMateriasByCarrera,
+    VisualizarApuntesPage
     
   ],
   providers: [

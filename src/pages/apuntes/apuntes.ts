@@ -4,6 +4,7 @@ import { NavController, AlertController } from 'ionic-angular';
 import { ApuntesService } from '../../providers/apuntes-service';
 import { DatabaseService } from '../../providers/database-service';
 import { CrearApuntePage } from '../crear-apunte/crear-apunte';
+import { VisualizarApuntesPage } from '../visualizar-apuntes/visualizar-apuntes';
 /**
  * Generated class for the Apuntes page.
  *
@@ -104,6 +105,13 @@ export class ApuntesPage {
         .catch(error =>{
           console.error(error)
         });
+    }
+
+    visualizarApunte(id_apuntes:number){
+      this.navCtrl.push(VisualizarApuntesPage, {
+        id_apunte: id_apuntes 
+      });
+
     }
 
 
