@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Consultar Apuntes por Materia
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+ 
+<ion-content class="home" padding>
+    <form>
+        
+        <ion-item>
+          <ion-label>Materias</ion-label>
+            <ion-select  [(ngModel)]="id_materia" name="id_materia">
+            <ion-option *ngFor="let materia of materias" [value] = "materia.id_materia">{{materia.descripcion}}</ion-option>
+          </ion-select>
+          <button ion-button item-right (click)="buscarApuntes()">
+                <ion-icon name="add-circle"></ion-icon>
+            </button> 
+      </ion-item>
+        <ion-list>
+     <ion-item *ngIf="apuntes.length == 0"> 
+       No existen registros de apuntes
+     </ion-item>
+
+ <ion-item-sliding *ngFor="let apunte of apuntes; let i = index ">
+      <ion-item >
+        <ion-label> {{ apunte.descripcion }} </ion-label>
+        </ion-item>
+        
+    </ion-item-sliding>
+  </ion-list>
+     
+    </form>
+</ion-content>

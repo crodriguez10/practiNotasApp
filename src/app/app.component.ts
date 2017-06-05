@@ -40,7 +40,8 @@ export class MyApp {
       { title: 'Carreras', component: CarrerasPage },
       { title: 'Calificaciones', component: CalificacionesPage },
       { title: 'Notificaciones', component: Notificaciones },
-      { title: 'Promedio Materia', component: PromedioMateriasByCarrera }
+      { title: 'Promedio Materia', component: PromedioMateriasByCarrera }      
+      
     ];
   }
 

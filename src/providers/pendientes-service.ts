@@ -53,5 +53,17 @@ export class PendientesService {
 	  })
 	}
   
+	pendientesbyMateria(id_materia:any){
+		 let sql = 'SELECT * FROM pendientes where id_materia= ?';
+	  console.log("consultar pendientes");
+	  return this.dbo.executeSql(sql, [id_materia])
+	  .then(response => {
+	    let pendientes = [];
+	    for (let index = 0; index < response.rows.length; index++) {
+	      pendientes.push( response.rows.item(index) );
+	    }
+	    return Promise.resolve( pendientes );
+	  })
 
+	}
 }

@@ -59,7 +59,7 @@ export class MateriasService {
 	}
 
 	materiasbyCarrera(id_carrera:any){
-		let sql = 'select distinct (materias.descripcion) as descripcion,AVG(calificaciones.nota) as promedio from materias , calificaciones , carreraMateria where materias.id_materias = calificaciones.materia and  carreraMateria.id_materia = materias.id_materias  and carreraMateria.id_carrera = ?';
+		let sql = 'select materias.descripcion as descripcion,AVG(calificaciones.nota) as promedio from materias , calificaciones , carreraMateria where materias.id_materias = calificaciones.materia and  carreraMateria.id_materia = materias.id_materias  and carreraMateria.id_carrera = ? order by materias.descripcion';
 		return this.dbo.executeSql(sql, [id_carrera])
 		.then(response => {
 	    let materias = [];

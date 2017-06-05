@@ -77,6 +77,7 @@ import { Camera } from '@ionic-native/camera';
     ,
     CrearPendientePage,
     PromedioMateriasByCarrera
+    
   ],
   providers: [
     StatusBar,
