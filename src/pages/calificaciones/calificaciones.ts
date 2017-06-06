@@ -26,6 +26,10 @@ export class CalificacionesPage {
     this.getAllCalificaciones();
   }
 
+  ionViewWillEnter() {
+    this.getAllCalificaciones();
+  }
+
   getAllCalificaciones(){
     console.log("getAllcalificaciones");
     this.calificacionesService.buscar()

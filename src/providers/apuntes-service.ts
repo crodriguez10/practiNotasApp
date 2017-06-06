@@ -47,6 +47,20 @@ export class ApuntesService {
 	  return this.dbo.executeSql(sql, [apunte.id_apuntes]);
 	}
 
+	apuntesbyMateria(id_materia:any){
+		 let sql = 'SELECT * FROM apuntes where id_materia= ?';
+	  console.log("consultar apuntes by materia");
+	  return this.dbo.executeSql(sql, [id_materia])
+	  .then(response => {
+	    let apuntes = [];
+	    for (let index = 0; index < response.rows.length; index++) {
+	      apuntes.push( response.rows.item(index) );
+	    }
+	    return Promise.resolve( apuntes );
+	  })
+
+	}
+
 	getApunteById(id_apuntes:number){
 		let sql = 'SELECT adjunto, apuntes.descripcion AS descripcion_apunte, materias.descripcion AS descripcion_materia FROM apuntes, materias WHERE apuntes.id_materia = materias.id_materias AND id_apuntes = ? ';
 		//let sql = 'SELECT adjunto FROM apuntes WHERE id_apuntes = ? ';

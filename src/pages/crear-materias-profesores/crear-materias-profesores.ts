@@ -105,27 +105,37 @@ export class CrearMateriasProfesoresPage {
 				descripcion:data.descripcion,
 				estado_materia: 1
 			}
-			console.log("materia: "+materia);
 			
-			var id_Materia = this.materiasService.create(materia);
-			console.log("id_Materia: "+id_Materia);
-			var docente = {
-				id_docente:data.id_docente,
-				id_Materia: id_Materia,	
-				estado_docente: 1
-			}
-			this.docenteMateriaService.create(docente);
-			console.log("data.id_cortes.length : "+data.id_cortes.length);
-			for (var i = 0; i<data.id_cortes.length; i++) {
-				console.log("data.id_cortes.length[i] : "+data.id_cortes[i]);
-				var corteMateria = {
-					id_corte: data.id_cortes[i],
-					id_materia: id_Materia,
-					estadoCorteMateria: 1
+			var id_Materia = null;
+			this.materiasService.create(materia).then(response => {
+
+				console.log("response crear registro materia middle: "+response);
+				id_Materia = response;
+				var docente = {
+					id_docente:data.id_docente,
+					id_Materia: id_Materia,	
+					estado_docente: 1
 				}
-				this.corteMateriaService.create(corteMateria);
-			}
-			this.goToBack();
+				
+				this.docenteMateriaService.create(docente);
+
+				console.log("data.id_cortes.length : "+data.id_cortes.length);
+				for (var i = 0; i<data.id_cortes.length; i++) {
+					console.log("data.id_cortes.length[i] : "+data.id_cortes[i]);
+					var corteMateria = {
+						id_corte: data.id_cortes[i],
+						id_materia: id_Materia,
+						estadoCorteMateria: 1
+					}
+					this.corteMateriaService.create(corteMateria);
+				}
+				this.goToBack();
+
+			})
+			.catch( error => {
+              	console.error( error );
+            });
+				
 		}
 		
 	}

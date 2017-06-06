@@ -35,7 +35,7 @@ export class CorteMateriaService {
 	}
 
 	create(corteMateria: any){
-		console.log("crear registro corte materia");
+		console.log("crear registro corte materia id_materia"+corteMateria.id_materia);
 		let sql = 'INSERT INTO corteMateria(id_corte , id_materia , estadoCorteMateria) VALUES(?,?,?)';
 		return this.dbo.executeSql(sql, [corteMateria.id_corte, corteMateria.id_materia, corteMateria.estadoCorteMateria]);
 	}
@@ -52,16 +52,20 @@ export class CorteMateriaService {
 	}
 
 	getCorteByIdMateria(id_materia:number){
-		let sql = 'SELECT id_corteMateria, corte.descripcion AS descripcion_corte FROM corteMateria, cortes WHERE cortes.id_corte = corteMateria.id_corte AND id_materia = ? ';
+		let sql = 'SELECT id_corteMateria, corte.descripcion AS descripcion_corte FROM corteMateria, corte WHERE corte.id_corte = corteMateria.id_corte AND id_materia = ? ';
 		//let sql = 'SELECT adjunto FROM apuntes WHERE id_apuntes = ? ';
 	  console.log("consultar corte by id_materia"+sql);
 	  return this.dbo.executeSql(sql, [id_materia])
 	  .then(response =>{
-	  		console.log("response: "+response);
-	  		console.log("response: rows apunte"+response.rows);
-	  		console.log("response: apunte"+response.rows.item(0))	;
-	  		console.log("response corte: "+response.rows.item(0).descripcion)	;
-	  	 	return response.rows.item(0);
+	  	 	let corteMateria = [];
+			for (let index = 0; index < response.rows.length; index++) {
+				corteMateria.push( response.rows.item(index) );
+		  		console.log("response: "+response);
+		  		console.log("response: rows apunte"+response.rows);
+		  		console.log("response: apunte"+response.rows.item(index));
+		  		console.log("response corte: "+response.rows.item(index).descripcion_corte);
+			}
+			return Promise.resolve( corteMateria );
 	  });
 
 	}

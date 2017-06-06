@@ -7,6 +7,7 @@ import { MateriasService } from '../../providers/materias-service';
 import { MateriaCalificacionService } from '../../providers/materia-calificacion-service';
 import { MateriasPage } from '../materias/materias';
 import { CorteMateriaService } from '../../providers/corte-materia-service';
+import { CorteService } from '../../providers/corte-service';
 
 /**
  * Generated class for the CrearCalificacionesMaterias page.
@@ -30,7 +31,8 @@ export class CrearCalificacionesMateriasPage {
     	        public calificacionService: CalificacionesService,
     	        public dataBaseService: DatabaseService,
     	        public materiaCalificacionService: MateriaCalificacionService,
-              public corteMateriaService: CorteMateriaService) {
+              public corteMateriaService: CorteMateriaService,
+              public cortesService: CorteService) {
         //his.formCrearCalificacionesMaterias = this.fb.group({nota:[''],});
         this.navController = navController;
         this.validations(this.fb);
@@ -38,6 +40,7 @@ export class CrearCalificacionesMateriasPage {
         calificacionService.setDbo(dataBaseService.getDbo());
         materiaCalificacionService.setDbo(dataBaseService.getDbo());
         corteMateriaService.setDbo(dataBaseService.getDbo());
+        cortesService.setDbo(dataBaseService.getDbo());
         
     }
 
@@ -60,6 +63,18 @@ export class CrearCalificacionesMateriasPage {
 	    })
   	}
 
+    /*
+  *Traer todas las cortes
+  */
+  getAllCortes(){
+    console.log("getAllcortes");
+    this.cortesService.getAll()
+    .then(cortes => {
+      console.log("cortes: "+cortes);
+      this.cortes_materias = cortes;
+    })
+  }
+
     getCorteByIdMateria(){
       console.log("getAllApuntes");
       this.corteMateriaService.getCorteByIdMateria(this.id_materia)
@@ -79,17 +94,17 @@ export class CrearCalificacionesMateriasPage {
             var calificacion = {
               nota:data.nota,
               descripcion:data.descripcion,
-              materia:data.id_materia
+              id_corteMateria:data.id_corte_materia
             }
-            console.log("calificacion: "+calificacion);
+            console.log("calificacion: "+calificacion.nota+" descripcion:"+calificacion.descripcion+" id_corteMateria"+calificacion.id_corteMateria);
 
-            var id_Calificacion = this.calificacionService.create(calificacion);
-            console.log("id_Calificacion: "+id_Calificacion);
-            var materia = {
+            this.calificacionService.create(calificacion);
+            
+            /*var materia = {
               id_materia:data.id_materia,
               id_Calificacion: id_Calificacion
             }
-            this.materiaCalificacionService.create(materia);
+            this.materiaCalificacionService.create(materia);*/
             this.goToBack();
         }
     }   

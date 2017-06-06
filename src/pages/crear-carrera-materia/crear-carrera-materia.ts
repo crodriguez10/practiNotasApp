@@ -80,19 +80,23 @@ export class CrearCarreraMateriaPage {
 				descripcion:data.descripcion,
 				estadoCarrera: 1
 			}
-			var id_carrera = this.carrerasService.create(carrera);
-			console.log("data.id_materia.length: "+data.id_materia.length);
-			for (var i = 0; i<data.id_materia.length; i++) {
-				console.log("data.id_materia[i]: "+data.id_materia[i]);
-				var carreraMateria = {
-					id_carrera: id_carrera,
-					id_materia: data.id_materia[i],
-					estadoCarreraMateria: 1
-				}
-				this.carreraMateriaService.create(carreraMateria);
 
-			}
-			this.goToBack();
+			this.carrerasService.create(carrera).then(id_carrera=>{
+
+				console.log("id_carrera crear carrera");
+				console.log("data.id_materia.length: "+data.id_materia.length);
+				for (var i = 0; i<data.id_materia.length; i++) {
+					console.log("data.id_materia[i]: "+data.id_materia[i]);
+					var carreraMateria = {
+						id_carrera: id_carrera,
+						id_materia: data.id_materia[i],
+						estadoCarreraMateria: 1
+					}
+					this.carreraMateriaService.create(carreraMateria);
+
+				}
+				this.goToBack();
+			});
 			
 		}
 

@@ -28,33 +28,40 @@ export class CalificacionesService {
 	    let calificaciones = [];
 	    for (let index = 0; index < response.rows.length; index++) {
 	      calificaciones.push( response.rows.item(index) );
+	      console.log(response.rows.item(index).id_corteMateria);
 	    }
 	    return Promise.resolve( calificaciones );
 	  })
 	}
 
 	buscar(){
-	  let sql = 'SELECT c.nota as nota,c.descripcion as descripcion,m.descripcion as materia FROM calificaciones c,materias m where c.materia = m.id_materias';
+	  //let sql = 'SELECT c.nota as nota,c.descripcion as descripcion,m.descripcion as materia FROM calificaciones c, corteMateria cm, materias m where c.id_corteMateria = cm.id_corteMateria and cm.id_materia = m.id_materias';
+	  let sql = 'select calificaciones.nota as nota, calificaciones.descripcion as descripcion, materias.descripcion as materia from calificaciones, corteMateria, materias where calificaciones.id_corteMateria = corteMateria.id_corteMateria and corteMateria.id_materia=materias.id_materias';
 	  console.log("consultar calificaciones");
 	  return this.dbo.executeSql(sql, [])
 	  .then(response => {
 	    let calificaciones = [];
+	    console.log("response.rows.length"+response.rows.length);
 	    for (let index = 0; index < response.rows.length; index++) {
 	      calificaciones.push( response.rows.item(index) );
 	    }
 	    return Promise.resolve( calificaciones );
-	  })
+	  }).catch(error=>{
+
+	  	console.log("ha ocorrido un error"+error);
+	  }
+	  )
 	}
 
 	create(calificacion: any){
-		console.log("crear registro");
-	  let sql = 'INSERT INTO calificaciones(nota, descripcion, materia) VALUES(?,?,?)';
-	  return this.dbo.executeSql(sql, [calificacion.nota,calificacion.descripcion, calificacion.materia]);
+		console.log("crear registro calificaciones");
+	  let sql = 'INSERT INTO calificaciones(nota, descripcion, id_corteMateria) VALUES(?,?,?)';
+	  return this.dbo.executeSql(sql, [calificacion.nota,calificacion.descripcion, calificacion.id_corteMateria]);
 	}
 
 	update(calificacion: any){
 		console.log("update calificaciones"+calificacion.id_calificaciones);
-	  	let sql = 'UPDATE calificaciones SET nota=?, descripcion=?, materia=? WHERE id_calificaciones=?';
+	  	let sql = 'UPDATE calificaciones SET nota=?, descripcion=?, id_corteMateria=? WHERE id_calificaciones=?';
 	  	return this.dbo.executeSql(sql, [calificacion.nota, calificacion.descripcion,calificacion.materia, calificacion.id_calificaciones]);
 	}
 

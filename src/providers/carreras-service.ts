@@ -40,12 +40,13 @@ export class CarrerasService {
 	create(carreras: any){
 		console.log("crear registro");
 		let sql = 'INSERT INTO carreras(descripcion , estadoCarrera) VALUES(?,?)';
-		return this.dbo.executeSql(sql, [carreras.descripcion, carreras.estadoCarrera]).then(result => {
-	  	this.dbo.executeSql("SELECT id_carreras from carreras ORDER BY id_carreras DESC LIMIT 1",[]).then(response =>
-	  	{
-	  		console.log("response: "+response.rows.item(0).id_carreras)	;
-	  	 	return response.rows.item(0).id_carreras;
-	  	})
+		return this.dbo.executeSql(sql, [carreras.descripcion, carreras.estadoCarrera])
+		.then(result => {
+		  	return this.dbo.executeSql("SELECT id_carreras from carreras ORDER BY id_carreras DESC LIMIT 1",[]).then(response =>
+		  	{
+		  		console.log("response: "+response.rows.item(0).id_carreras)	;
+		  	 	return response.rows.item(0).id_carreras;
+		  	})
 	  });
 	}
 

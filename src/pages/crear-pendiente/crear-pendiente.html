@@ -30,8 +30,6 @@
 
        <ion-item>
            <ion-label>Dia de Pendiente:</ion-label>
-       </ion-item>
-        <ion-item>
             <ion-select  [(ngModel)]="diaSeleccionado"
                      formControlName="diaEvento">
             <ion-option *ngFor="let day of days" [value] = "day.title">{{day.title}}</ion-option>

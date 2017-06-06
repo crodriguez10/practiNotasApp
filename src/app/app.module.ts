@@ -84,6 +84,7 @@ import { Camera } from '@ionic-native/camera';
     PromedioMateriasByCarrera,
     VisualizarApuntesPage,
     CortesPage
+    
   ],
   providers: [
     StatusBar,

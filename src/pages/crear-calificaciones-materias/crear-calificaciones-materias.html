@@ -9,7 +9,7 @@
     <form [formGroup]="formCrearCalificacionesMaterias" (ngSubmit)="guardarMateriaCalificacion(formCrearCalificacionesMaterias.value)">
          <ion-item>
             <ion-label floating>Nota calif.</ion-label>
-            <ion-input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); if(this.value >5.0 ){this.value='';}" min="0" max="5" step="0.1" maxlength="3" value="" name="nota" formControlName="nota"></ion-input>   
+            <ion-input type="number" value="0" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); if(this.value >5.0 ){this.value='';}" min="0" max="5" step="0.1" maxlength="3" value="" name="nota" formControlName="nota"></ion-input>   
             <!-- formControlName="descripcion"  ************************porq no puedo colocar q es nota en formControlName????-->   
         </ion-item> 
         <ion-item>
@@ -18,7 +18,7 @@
         </ion-item>        
         <ion-item>
           <ion-label>Materia</ion-label>
-            <ion-select  [(ngModel)]="id_materia" formControlName="id_materia" name="id_materia" (change)="onChangeMateria()" >
+            <ion-select  [(ngModel)]="id_materia" formControlName="id_materia" name="id_materia" (ngModelChange)="onChangeMateria()" >
             <ion-option *ngFor="let materia of materias" [value] = "materia.id_materias">{{materia.descripcion}}</ion-option><!--{{materia.id_materias}}-{{materia.descripcion}}</ion-option>-->
           </ion-select>
       </ion-item>
