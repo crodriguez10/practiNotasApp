@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+      <button ion-button menuToggle >
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>Calificaciones</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+   <ion-list>
+     <ion-item *ngIf="calificaciones.length == 0"> 
+       No existen registros de calificaciones
+     </ion-item>
+
+
+    <ion-item-sliding *ngFor="let calificacion of calificaciones; let i = index ">
+      	<ion-item >
+        	<b>Descripcion:</b> {{calificacion.descripcion_corte}}
+      	</ion-item>
+      	<ion-item>
+        	<b>Nota:</b>
+        	{{calificacion.nota}}
+      	</ion-item>
+      	<ion-item>
+	  		<img [src]="calificacion.soporte_nota" *ngIf="calificacion.soporte_nota" />
+   		</ion-item>
+        
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

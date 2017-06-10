@@ -26,9 +26,12 @@
 
  <ion-item-sliding *ngFor="let materia of materias; let i = index ">
       <ion-item >
-        <ion-label> {{ materia.descripcion }} </ion-label>
+        <ion-label>{{ materia.id_materias }} - {{ materia.descripcion }} </ion-label>
         <ion-label> {{ materia.promedio }} </ion-label>     
-        
+        <button  ion-button item-right color="light" (click)="visualizarDetalleCalificaciones(materia.id_materias)" >
+          <ion-icon name="md-eye"></ion-icon>
+          Ver
+        </button>
       </ion-item>
         
     </ion-item-sliding>

@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { MateriasService } from '../../providers/materias-service';
 import { CarrerasService } from '../../providers/carreras-service';
 import { DatabaseService } from '../../providers/database-service';
+import { VisualizarCalificacionesPage } from '../visualizar-calificaciones/visualizar-calificaciones';
 /**
  * Generated class for the PromedioMateriasByCarrera page.
  *
@@ -49,5 +50,11 @@ export class PromedioMateriasByCarrera {
       console.log("carreras: "+carreras);
       this.carreras = carreras;
     })
+  }
+
+  visualizarDetalleCalificaciones(id_materias:any){
+    this.navCtrl.push(VisualizarCalificacionesPage, {
+        id_materias: id_materias,
+      });
   }
 }

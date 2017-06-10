@@ -19,6 +19,7 @@ import { Notificaciones } from '../pages/notificaciones/notificaciones';
 import { CrearCarreraMateriaPage } from '../pages/crear-carrera-materia/crear-carrera-materia';
 import { VisualizarApuntesPage } from '../pages/visualizar-apuntes/visualizar-apuntes';
 import { CortesPage } from '../pages/cortes/cortes';
+import { VisualizarCalificacionesPage } from '../pages/visualizar-calificaciones/visualizar-calificaciones';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -39,6 +40,7 @@ import {LocalNotifications} from "@ionic-native/local-notifications";
 import { PromedioMateriasByCarrera } from '../pages/promedio-materias-by-carrera/promedio-materias-by-carrera';
 import { Camera } from '@ionic-native/camera';
 
+
 @NgModule({
   declarations: [
     MyApp,
@@ -58,7 +60,9 @@ import { Camera } from '@ionic-native/camera';
     CrearPendientePage,
     PromedioMateriasByCarrera,
     VisualizarApuntesPage,
-    CortesPage
+    CortesPage,
+    VisualizarCalificacionesPage
+
   ],
   imports: [
     BrowserModule,
@@ -83,7 +87,8 @@ import { Camera } from '@ionic-native/camera';
     CrearPendientePage,
     PromedioMateriasByCarrera,
     VisualizarApuntesPage,
-    CortesPage
+    CortesPage,
+    VisualizarCalificacionesPage
     
   ],
   providers: [

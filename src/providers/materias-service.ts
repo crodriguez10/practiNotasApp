@@ -67,7 +67,7 @@ export class MateriasService {
 	}
 
 	materiasbyCarrera(id_carrera:any){
-		let sql = 'select materias.descripcion as descripcion,AVG(calificaciones.nota) as promedio from materias , calificaciones , carreraMateria, corteMateria where calificaciones.id_corteMateria = corteMateria.id_corteMateria and materias.id_materias = corteMateria.id_materia and carreraMateria.id_materia = materias.id_materias  and carreraMateria.id_carrera = ? group by materias.descripcion';
+		let sql = 'select materias.descripcion as descripcion, materias.id_materias, AVG(calificaciones.nota) as promedio from materias , calificaciones , carreraMateria, corteMateria where calificaciones.id_corteMateria = corteMateria.id_corteMateria and materias.id_materias = corteMateria.id_materia and carreraMateria.id_materia = materias.id_materias  and carreraMateria.id_carrera = ? group by materias.descripcion, materias.id_materias';
 		return this.dbo.executeSql(sql, [id_carrera])
 		.then(response => {
 	    let materias = [];

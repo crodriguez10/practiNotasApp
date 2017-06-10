@@ -8,6 +8,7 @@ import { MateriaCalificacionService } from '../../providers/materia-calificacion
 import { MateriasPage } from '../materias/materias';
 import { CorteMateriaService } from '../../providers/corte-materia-service';
 import { CorteService } from '../../providers/corte-service';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 /**
  * Generated class for the CrearCalificacionesMaterias page.
@@ -24,6 +25,7 @@ export class CrearCalificacionesMateriasPage {
   materias: any[] = [];
   cortes_materias: any[] = [];
   id_materia:number;
+  image: string = null;
   formCrearCalificacionesMaterias: FormGroup;
   constructor(private navController: NavController,
               private fb: FormBuilder,
@@ -32,7 +34,8 @@ export class CrearCalificacionesMateriasPage {
     	        public dataBaseService: DatabaseService,
     	        public materiaCalificacionService: MateriaCalificacionService,
               public corteMateriaService: CorteMateriaService,
-              public cortesService: CorteService) {
+              public cortesService: CorteService,
+              private camera: Camera) {
         //his.formCrearCalificacionesMaterias = this.fb.group({nota:[''],});
         this.navController = navController;
         this.validations(this.fb);
@@ -94,7 +97,8 @@ export class CrearCalificacionesMateriasPage {
             var calificacion = {
               nota:data.nota,
               descripcion:data.descripcion,
-              id_corteMateria:data.id_corte_materia
+              id_corteMateria:data.id_corte_materia,
+              soporte_nota: this.image
             }
             console.log("calificacion: "+calificacion.nota+" descripcion:"+calificacion.descripcion+" id_corteMateria"+calificacion.id_corteMateria);
 
@@ -138,5 +142,20 @@ export class CrearCalificacionesMateriasPage {
       console.log("cambio combo materia:");
       this.getCorteByIdMateria();
     }
+
+    getPicture(){
+    let options: CameraOptions = {
+      destinationType: this.camera.DestinationType.FILE_URI
+    }
+
+    this.camera.getPicture( options )
+      .then(imageData => {
+          this.image = imageData;
+          console.log("imageData: "+imageData)
+      })
+      .catch(error =>{
+          console.error( error );
+      });
+  }
 
 }
